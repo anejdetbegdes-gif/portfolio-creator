@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create My Portfolio | Portfolio Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="creator-body">
+
+    <!-- Creator Toolbar -->
+    <header class="creator-toolbar">
+        <div class="container creator-toolbar-content">
+
+            <a href="index.html" class="creator-back">
+                ← Back to Home
+            </a>
+
+            <div class="editing-status">
+                <span class="status-dot"></span>
+                Editing Your Portfolio
+            </div>
+
+            <div class="creator-actions">
+    <button
+        class="toolbar-button save-button"
+        id="save-portfolio-button">
+        💾 Save
+    </button>
+
+    <button
+        class="toolbar-button preview-button">
+        👁 Preview
+    </button>
+
+    <button
+        class="toolbar-button export-button">
+        Export Portfolio
+    </button>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <main class="creator-page">
+
+        <!-- Introduction -->
+        <section class="creator-hero">
+
+            <div class="container creator-intro">
+
+                <div class="creator-text">
+
+                    <!-- Name -->
+                    <div class="editable-heading">
+                        <h1 id="student-name">Your Name</h1>
+
+                        <button class="edit-button" data-edit="name">
+                            ✎ Edit
+                        </button>
+                    </div>
+
+
+                    <!-- Title -->
+                    <div class="editable-heading subtitle-row">
+
+                        <h2 id="student-title">
+                            Student • Your Major
+                        </h2>
+
+                        <button class="edit-button" data-edit="title">
+                            ✎ Edit
+                        </button>
+
+                    </div>
+
+
+                    <!-- About -->
+                    <div class="editable-about">
+
+                        <div class="section-edit-header">
+
+                            <h3>About Me</h3>
+
+                            <button class="edit-button" data-edit="about">
+                                ✎ Edit
+                            </button>
+
+                        </div>
+
+                        <p id="student-about">
+                            Write a short introduction about yourself,
+                            your interests, experience, and career goals.
+                            This will appear on your portfolio website.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Links -->
+                    <div class="creator-links">
+
+                        <button
+                            class="edit-link-button"
+                            data-link="resume">
+                            + Add Resume
+                        </button>
+
+                        <button
+                            class="edit-link-button"
+                            data-link="linkedin">
+                            + Add LinkedIn
+                        </button>
+
+                        <button
+                            class="edit-link-button"
+                            data-link="github">
+                            + Add GitHub
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Profile Photo -->
+                <div class="creator-profile">
+
+                    <div class="creator-photo" id="profile-preview">
+                        <span id="profile-initials">YN</span>
+                    </div>
+
+                    <label class="change-photo-button">
+
+                        Change Photo
+
+                        <input
+                            type="file"
+                            id="photo-input"
+                            accept="image/png, image/jpeg, image/webp"
+                            hidden
+                        >
+
+                    </label>
+
+                    <p class="photo-help">
+                        JPG or PNG recommended
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Projects -->
+        <section class="creator-project-section">
+
+            <div class="container">
+
+                <div class="creator-section-heading">
+
+                    <div>
+                        <p class="section-label">YOUR WORK</p>
+
+                        <h2>My Projects</h2>
+
+                        <p>
+                            Add projects that showcase your experience
+                            and skills.
+                        </p>
+                    </div>
+
+                    <button
+                        class="add-project-button"
+                        id="add-project-button">
+                        + Add Project
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="creator-project-grid"
+                    id="project-grid">
+
+                    <!-- Project 1 -->
+                    <article class="creator-project-card">
+
+                        <div class="creator-project-placeholder">
+                            Project Image
+                        </div>
+
+                        <div class="creator-project-content">
+
+                            <div class="project-edit-top">
+
+                                <h3 class="project-title">
+                                    Project Title
+                                </h3>
+
+                                <button class="edit-button project-edit-button">
+                                    ✎ Edit
+                                </button>
+
+                            </div>
+
+                            <p class="project-description">
+                                Add a short description explaining what
+                                you created and what you learned.
+                            </p>
+
+                            <div class="creator-project-footer">
+
+                                <span class="project-link">
+                                    Project Link
+                                </span>
+
+                                <button class="remove-project-button">
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Project 2 -->
+                    <article class="creator-project-card">
+
+                        <div class="creator-project-placeholder project-two">
+                            Project Image
+                        </div>
+
+                        <div class="creator-project-content">
+
+                            <div class="project-edit-top">
+
+                                <h3 class="project-title">
+                                    Project Title
+                                </h3>
+
+                                <button class="edit-button project-edit-button">
+                                    ✎ Edit
+                                </button>
+
+                            </div>
+
+                            <p class="project-description">
+                                Add another academic, professional,
+                                or personal project here.
+                            </p>
+
+                            <div class="creator-project-footer">
+
+                                <span class="project-link">
+                                    Project Link
+                                </span>
+
+                                <button class="remove-project-button">
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Main Edit Modal -->
+    <div class="edit-modal-overlay" id="edit-modal">
+
+        <div class="edit-modal">
+
+            <div class="edit-modal-header">
+
+                <div>
+                    <p class="edit-modal-label">
+                        PORTFOLIO EDITOR
+                    </p>
+
+                    <h2 id="edit-modal-title">
+                        Edit your information
+                    </h2>
+                </div>
+
+                <button
+                    class="edit-modal-close"
+                    id="edit-modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="edit-modal-body">
+
+                <label
+                    id="edit-input-label"
+                    for="edit-input">
+                    Your information
+                </label>
+
+                <input
+                    type="text"
+                    id="edit-input"
+                    class="edit-modal-input"
+                    autocomplete="off"
+                >
+
+                <textarea
+                    id="edit-textarea"
+                    class="edit-modal-textarea"
+                    rows="5">
+                </textarea>
+
+                <p
+                    class="edit-modal-help"
+                    id="edit-modal-help">
+                    This information will appear on your portfolio.
+                </p>
+
+            </div>
+
+
+            <div class="edit-modal-actions">
+
+                <button
+                    class="edit-modal-cancel"
+                    id="edit-modal-cancel">
+                    Cancel
+                </button>
+
+                <button
+                    class="edit-modal-save"
+                    id="edit-modal-save">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Project Editor Modal -->
+    <div class="edit-modal-overlay" id="project-modal">
+
+        <div class="edit-modal">
+
+            <div class="edit-modal-header">
+
+                <div>
+                    <p class="edit-modal-label">
+                        PROJECT EDITOR
+                    </p>
+
+                    <h2 id="project-modal-title">
+                        Edit Project
+                    </h2>
+                </div>
+
+                <button
+                    class="edit-modal-close"
+                    id="project-modal-close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="edit-modal-body">
+
+                <label for="project-title-input">
+                    Project Title
+                </label>
+
+                <input
+                    type="text"
+                    id="project-title-input"
+                    class="edit-modal-input"
+                    placeholder="My Project"
+                >
+
+
+                <label
+                    for="project-description-input"
+                    style="margin-top: 18px;">
+                    Description
+                </label>
+
+                <textarea
+                    id="project-description-input"
+                    class="edit-modal-textarea"
+                    rows="5"
+                    style="display: block;"
+                    placeholder="Describe what you created and what you learned.">
+                </textarea>
+
+
+                <label
+                    for="project-link-input"
+                    style="margin-top: 18px;">
+                    Project Link
+                </label>
+
+                <input
+                    type="url"
+                    id="project-link-input"
+                    class="edit-modal-input"
+                    placeholder="https://..."
+                >
+
+                <p class="edit-modal-help">
+                    You can link to GitHub, a live website, report,
+                    presentation, or another project page.
+                </p>
+
+            </div>
+
+
+            <div class="edit-modal-actions">
+
+                <button
+                    class="edit-modal-cancel"
+                    id="project-modal-cancel">
+                    Cancel
+                </button>
+
+                <button
+                    class="edit-modal-save"
+                    id="project-modal-save">
+                    Save Project
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="creator.js"></script>
+
+</body>
+</html>
