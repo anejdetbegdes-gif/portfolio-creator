@@ -1529,3 +1529,23 @@ footer {
     color: white;
     border-color: #2563eb;
 }
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 50%;
+    display: block;
+}
