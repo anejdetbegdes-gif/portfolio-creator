@@ -1868,6 +1868,76 @@ footer {
     color: #78350f;
 }
 
+.guide-name-check p + p {
+    margin-top: 8px;
+}
+
+.guide-name-check p[hidden] {
+    display: none;
+}
+
+.name-check-title {
+    padding-top: 8px;
+    border-top: 1px dashed #fcd34d;
+}
+
+.name-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.name-row span {
+    padding: 3px 10px;
+    border-radius: 7px;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.name-ok {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.name-bad {
+    background: #fee2e2;
+    color: #991b1b;
+    text-decoration: line-through;
+}
+
+.guide-trouble {
+    margin-top: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.guide-trouble summary {
+    padding: 12px 16px;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.guide-trouble ol {
+    margin: 0;
+    padding: 0 18px 14px 36px;
+    display: grid;
+    gap: 8px;
+    color: #334155;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.guide-trouble code {
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 12px;
+}
+
 /* ========================================
    PREVIEW LAYER (shows the exact export)
 ======================================== */

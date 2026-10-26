@@ -287,19 +287,34 @@
         </div>
 
         <div class="modal-body">
-            <p class="guide-callout info" id="guide-export-note" hidden>
-                <strong>Your file is downloading:</strong> look for <code>index.html</code> in your Downloads
-                folder. Double-click it to check that it opens correctly in your browser.
-            </p>
+            <div class="guide-callout warn guide-name-check" id="guide-export-note" hidden>
+                <p id="guide-saved-text"><strong>Saved!</strong> Find the file where you saved it and double-click it to check that it opens.</p>
+                <p id="guide-downloaded-text"><strong>Your file is downloading.</strong> Open your Downloads folder and double-click it to check that it opens.</p>
+                <p class="name-check-title"><strong>⚠ Check the file name before uploading.</strong> It must be exactly:</p>
+                <p class="name-row"><span class="name-ok">✓ index.html</span><span class="name-bad">✗ index (1).html</span><span class="name-bad">✗ index(2).html</span></p>
+                <p>If your computer added a number, rename the file to <code>index.html</code> first. Otherwise GitHub Pages shows a <strong>404</strong> error.</p>
+            </div>
 
             <ol class="guide-steps" style="margin-top:14px">
                 <li>Go to <strong>github.com</strong> and sign in (or create a free account).</li>
                 <li>Click <strong>+</strong> (top right) &rarr; <strong>New repository</strong>. Name it, for example, <code>my-portfolio</code>. Choose <strong>Public</strong> and click <strong>Create repository</strong>.</li>
-                <li>Click <strong>uploading an existing file</strong> (or <strong>Add file &rarr; Upload files</strong>) and drag in the <code>index.html</code> you exported. Click <strong>Commit changes</strong>.</li>
+                <li>Click <strong>uploading an existing file</strong> (or <strong>Add file &rarr; Upload files</strong>) and drag in the <code>index.html</code> you exported. Make sure the name is exactly <code>index.html</code>, not <code>index (1).html</code>. Click <strong>Commit changes</strong>.</li>
                 <li>Open <strong>Settings &rarr; Pages</strong>. Under <em>Build and deployment</em>, choose <strong>Deploy from a branch</strong>, branch <strong>main</strong>, folder <strong>/ (root)</strong>, then <strong>Save</strong>.</li>
                 <li>Wait 1&ndash;10 minutes, then refresh the Pages screen. Your address appears at the top, like <code>https://your-username.github.io/my-portfolio/</code>.</li>
                 <li>Open the link to check it, then share it with your professor.</li>
             </ol>
+
+            <details class="guide-trouble">
+                <summary>Seeing a “404 – File not found” page?</summary>
+                <ol>
+                    <li><strong>Check the file name.</strong> In your repository it must be exactly <code>index.html</code>. If it says <code>index (1).html</code>, click the file &rarr; ✏️ (edit) &rarr; change the name to <code>index.html</code> &rarr; <strong>Commit changes</strong>.</li>
+                    <li><strong>Check the address.</strong> Use the link shown at the top of <strong>Settings &rarr; Pages</strong>. It ends with your repository name, e.g. <code>…github.io/my-portfolio/</code>.</li>
+                    <li><strong>Check that Pages is on.</strong> In <strong>Settings &rarr; Pages</strong>, choose branch <strong>main</strong> and folder <strong>/ (root)</strong>, then <strong>Save</strong>.</li>
+                    <li><strong>Wait a few minutes.</strong> Open the <strong>Actions</strong> tab. When you see a green ✓, refresh your page.</li>
+                    <li><strong>Make the repository Public.</strong> Free accounts can only publish public repositories (Settings &rarr; bottom of the page &rarr; Change visibility).</li>
+                    <li><strong>Upload the file itself, not a folder.</strong> <code>index.html</code> must be on the main page of the repository, not inside another folder.</li>
+                </ol>
+            </details>
 
             <p class="guide-callout info">
                 <strong>To update later:</strong> make changes here, export again, and upload the new

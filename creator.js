@@ -1199,8 +1199,42 @@
 
         if (hasUnsavedChanges) persist(false);
 
-        downloadFile(buildExportHTML(state), "index.html", "text/html;charset=utf-8");
-        openGuide(true);
+        const html = buildExportHTML(state);
+
+        // Chrome / Edge: a real "Save as" dialog. If index.html already exists the
+        // computer asks to REPLACE it, instead of silently saving "index (1).html".
+        if (typeof window.showSaveFilePicker === "function") {
+            saveWithPicker(html).then(function (result) {
+                if (result === "saved") openGuide("saved");
+                else if (result === "cancelled") toast("Export cancelled. Nothing was saved.");
+                else { downloadFile(html, "index.html", "text/html;charset=utf-8"); openGuide("downloaded"); }
+            });
+            return;
+        }
+
+        // Other browsers: normal download
+        downloadFile(html, "index.html", "text/html;charset=utf-8");
+        openGuide("downloaded");
+    }
+
+    async function saveWithPicker(html) {
+        try {
+            const handle = await window.showSaveFilePicker({
+                suggestedName: "index.html",
+                types: [{ description: "Web page", accept: { "text/html": [".html"] } }]
+            });
+            if (handle.name !== "index.html") {
+                toast("Heads up: you saved it as \"" + handle.name + "\". Rename it to index.html before uploading.", "error", 9000);
+            }
+            const writable = await handle.createWritable();
+            await writable.write(new Blob([html], { type: "text/html;charset=utf-8" }));
+            await writable.close();
+            return "saved";
+        } catch (error) {
+            if (error && error.name === "AbortError") return "cancelled";
+            console.warn("Save dialog unavailable, falling back to download:", error);
+            return "fallback";
+        }
     }
 
 
@@ -1724,6 +1758,8 @@
 
     function openGuide(afterExport, opener) {
         guideExportNote.hidden = !afterExport;
+        document.getElementById("guide-saved-text").hidden = afterExport !== "saved";
+        document.getElementById("guide-downloaded-text").hidden = afterExport === "saved";
         document.getElementById("guide-modal-title").textContent = afterExport
             ? "Exported! Now put it online"
             : "Put your portfolio online";
