@@ -24,6 +24,7 @@ Plain HTML, CSS and JavaScript. No backend, no accounts, no database, no framewo
 
 ## Features
 
+- **Logo:** a blue circle with a white "P" and a small cursor ("click and build"), with the word "Creator" in blue. It appears in the Home and Example navigation, in the Creator toolbar, and as the browser-tab icon on all pages.
 - **Shared navigation:** Home and Example use the same top bar: logo, Home / Example / How it works / FAQ, and a Create My Portfolio button.
 - **Editing tip:** a light-blue line at the top of the editor explains ✎ Edit / + Add / Preview (it replaced the old fake address bar). It can be hidden with ×, the choice is remembered, and **Draft → Show editing tip** brings it back.
 - **Editor layout:** two slim rows. Row 1 holds the main actions: Back, save status, Save, Preview, Export. Row 2 holds the settings: a Design picker, a completeness bar (click it for the checklist), the "🔒 Saved in this browser only" note (click it for details), and a **Draft ▾** menu with How to publish, Download backup, Restore backup and Reset. Menus close on an outside click or Esc.
