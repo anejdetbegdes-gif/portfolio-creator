@@ -841,6 +841,18 @@ footer {
     color: #2563eb;
 }
 
+.creator-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    justify-self: start;
+}
+
+.creator-back-mark {
+    flex: none;
+    display: block;
+}
+
 .editing-status {
     display: flex;
     align-items: center;
@@ -2150,6 +2162,15 @@ footer {
     .creator-back::after {
         content: "← Home";
         font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .creator-back .creator-back-text {
+        display: none;
+    }
+
+    .creator-back {
+        gap: 8px;
     }
 
     .toolbar-button {
@@ -2396,15 +2417,14 @@ footer {
 }
 
 .hx-logo-mark {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: #2563eb;
-    color: #ffffff;
-    display: grid;
-    place-items: center;
-    font-size: 12px;
-    letter-spacing: 0;
+    flex: none;
+    width: 32px;
+    height: 32px;
+    display: block;
+}
+
+.hx-logo-accent {
+    color: #2563eb;
 }
 
 .hx-links {
