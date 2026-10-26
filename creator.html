@@ -4,458 +4,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
+    <meta name="description" content="Visual editor for creating a student portfolio website without coding.">
     <title>Create My Portfolio | Portfolio Creator</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563eb'/%3E%3Ctext x='32' y='42' font-family='Arial' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EPC%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="creator-body">
 
-    <!-- Creator Toolbar -->
+    <!-- Shown only if style.css could not load (e.g. a file opened directly from inside a ZIP) -->
+    <div class="load-warning" role="alert" style="margin:16px;padding:16px 20px;border:2px solid #dc2626;border-radius:10px;background:#fef2f2;color:#7f1d1d;font:16px/1.5 Arial,sans-serif">
+        <strong>Some files are missing.</strong> This page needs <code>style.css</code> and <code>creator.js</code> in the same folder.
+        If you opened it from inside a ZIP file, first extract the whole folder (right-click the ZIP &rarr; <em>Extract All</em>), then open <code>index.html</code> from the extracted folder.
+    </div>
+
+    <a class="skip-link" href="#editor-canvas">Skip to the editor</a>
+
+    <!-- ROW 1: main actions -->
     <header class="creator-toolbar">
         <div class="container creator-toolbar-content">
 
-            <a href="index.html" class="creator-back">
-                ← Back to Home
-            </a>
+            <a href="index.html" class="creator-back">← Back to Home</a>
 
-            <div class="editing-status">
-                <span class="status-dot"></span>
-                Editing Your Portfolio
+            <div class="editing-status" id="save-status" role="status" aria-live="polite" data-state="saved">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span id="save-status-text">Editing Your Portfolio</span>
             </div>
 
             <div class="creator-actions">
-    <button
-        class="toolbar-button save-button"
-        id="save-portfolio-button">
-        💾 Save
-    </button>
-
-    <button
-        class="toolbar-button preview-button">
-        👁 Preview
-    </button>
-
-    <button
-        class="toolbar-button export-button">
-        Export Portfolio
-    </button>
-
+                <button type="button" class="toolbar-button save-button" id="save-portfolio-button">Save</button>
+                <button type="button" class="toolbar-button preview-button" id="preview-button">Preview</button>
+                <button type="button" class="toolbar-button export-button" id="export-button">Export Portfolio</button>
             </div>
 
         </div>
     </header>
 
+    <!-- ROW 2: quiet settings row (design, progress, storage note, draft menu) -->
+    <section class="settings-bar" aria-label="Portfolio settings">
+        <div class="container settings-bar-content">
 
-    <main class="creator-page">
-
-        <!-- Introduction -->
-        <section class="creator-hero">
-
-            <div class="container creator-intro">
-
-                <div class="creator-text">
-
-                    <!-- Name -->
-                    <div class="editable-heading">
-                        <h1 id="student-name">Your Name</h1>
-
-                        <button class="edit-button" data-edit="name">
-                            ✎ Edit
-                        </button>
-                    </div>
-
-
-                    <!-- Title -->
-                    <div class="editable-heading subtitle-row">
-
-                        <h2 id="student-title">
-                            Student • Your Major
-                        </h2>
-
-                        <button class="edit-button" data-edit="title">
-                            ✎ Edit
-                        </button>
-
-                    </div>
-
-
-                    <!-- About -->
-                    <div class="editable-about">
-
-                        <div class="section-edit-header">
-
-                            <h3>About Me</h3>
-
-                            <button class="edit-button" data-edit="about">
-                                ✎ Edit
-                            </button>
-
-                        </div>
-
-                        <p id="student-about">
-                            Write a short introduction about yourself,
-                            your interests, experience, and career goals.
-                            This will appear on your portfolio website.
-                        </p>
-
-                    </div>
-
-
-                    <!-- Links -->
-                    <div class="creator-links">
-
-                        <button
-                            class="edit-link-button"
-                            data-link="resume">
-                            + Add Resume
-                        </button>
-
-                        <button
-                            class="edit-link-button"
-                            data-link="linkedin">
-                            + Add LinkedIn
-                        </button>
-
-                        <button
-                            class="edit-link-button"
-                            data-link="github">
-                            + Add GitHub
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Profile Photo -->
-                <div class="creator-profile">
-
-                    <div class="creator-photo" id="profile-preview">
-                        <span id="profile-initials">YN</span>
-                    </div>
-
-                    <label class="change-photo-button">
-
-                        Change Photo
-
-                        <input
-                            type="file"
-                            id="photo-input"
-                            accept="image/png, image/jpeg, image/webp"
-                            hidden
-                        >
-
-                    </label>
-
-                    <p class="photo-help">
-                        JPG or PNG recommended
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Projects -->
-        <section class="creator-project-section">
-
-            <div class="container">
-
-                <div class="creator-section-heading">
-
-                    <div>
-                        <p class="section-label">YOUR WORK</p>
-
-                        <h2>My Projects</h2>
-
-                        <p>
-                            Add projects that showcase your experience
-                            and skills.
-                        </p>
-                    </div>
-
-                    <button
-                        class="add-project-button"
-                        id="add-project-button">
-                        + Add Project
+            <div class="settings-group">
+                <span class="settings-label" id="theme-label">Design</span>
+                <div class="theme-picker" role="radiogroup" aria-labelledby="theme-label" id="theme-picker">
+                    <button type="button" class="theme-option" role="radio" data-theme="professional" aria-checked="true">
+                        <span class="theme-swatch swatch-professional" aria-hidden="true"></span>
+                        Professional
                     </button>
-
+                    <button type="button" class="theme-option" role="radio" data-theme="editorial" aria-checked="false">
+                        <span class="theme-swatch swatch-editorial" aria-hidden="true"></span>
+                        Editorial
+                    </button>
+                    <button type="button" class="theme-option" role="radio" data-theme="dark" aria-checked="false">
+                        <span class="theme-swatch swatch-dark" aria-hidden="true"></span>
+                        Dark
+                    </button>
                 </div>
-
-
-                <div
-                    class="creator-project-grid"
-                    id="project-grid">
-
-                    <!-- Project 1 -->
-                    <article class="creator-project-card">
-
-                        <div class="creator-project-placeholder">
-                            Project Image
-                        </div>
-
-                        <div class="creator-project-content">
-
-                            <div class="project-edit-top">
-
-                                <h3 class="project-title">
-                                    Project Title
-                                </h3>
-
-                                <button class="edit-button project-edit-button">
-                                    ✎ Edit
-                                </button>
-
-                            </div>
-
-                            <p class="project-description">
-                                Add a short description explaining what
-                                you created and what you learned.
-                            </p>
-
-                            <div class="creator-project-footer">
-
-                                <span class="project-link">
-                                    Project Link
-                                </span>
-
-                                <button class="remove-project-button">
-                                    Remove
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-
-                    <!-- Project 2 -->
-                    <article class="creator-project-card">
-
-                        <div class="creator-project-placeholder project-two">
-                            Project Image
-                        </div>
-
-                        <div class="creator-project-content">
-
-                            <div class="project-edit-top">
-
-                                <h3 class="project-title">
-                                    Project Title
-                                </h3>
-
-                                <button class="edit-button project-edit-button">
-                                    ✎ Edit
-                                </button>
-
-                            </div>
-
-                            <p class="project-description">
-                                Add another academic, professional,
-                                or personal project here.
-                            </p>
-
-                            <div class="creator-project-footer">
-
-                                <span class="project-link">
-                                    Project Link
-                                </span>
-
-                                <button class="remove-project-button">
-                                    Remove
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </article>
-
-                </div>
-
             </div>
 
-        </section>
+            <details class="settings-pop progress-pop" id="progress-box">
+                <summary class="progress-summary" title="Show checklist">
+                    <span id="progress-text">0 of 6 complete</span>
+                    <span class="progress-track" aria-hidden="true">
+                        <span class="progress-fill" id="progress-fill"></span>
+                    </span>
+                    <span class="pop-caret" aria-hidden="true">▾</span>
+                </summary>
+                <div class="pop-panel pop-center">
+                    <p class="pop-title">Portfolio checklist</p>
+                    <ul class="progress-list" id="progress-list"></ul>
+                    <p class="pop-hint">This is only a guide. You can export at any time.</p>
+                </div>
+            </details>
 
+            <div class="settings-right">
+                <details class="settings-pop note-pop">
+                    <summary class="storage-note">
+                        <span aria-hidden="true">🔒</span> <span class="note-long">Saved in this browser only</span><span class="note-short">This browser only</span>
+                    </summary>
+                    <div class="pop-panel pop-right">
+                        <p class="pop-title">Where is my draft?</p>
+                        <p class="pop-text">
+                            Your draft is stored only on this device, in this browser. Switching computers or
+                            browsers, using private mode, or clearing browser data can remove it.
+                        </p>
+                        <p class="pop-text"><strong>Tip:</strong> use <em>Draft &rarr; Download backup</em> to keep a copy.</p>
+                    </div>
+                </details>
+
+                <details class="settings-pop draft-pop">
+                    <summary class="toolbar-button draft-button" id="draft-menu-button">Draft <span class="pop-caret" aria-hidden="true">▾</span></summary>
+                    <div class="pop-panel pop-right draft-menu">
+                        <button type="button" class="menu-item" id="guide-button"><span aria-hidden="true">📘</span> How to publish</button>
+                        <button type="button" class="menu-item" id="backup-button"><span aria-hidden="true">⬇</span> Download backup</button>
+                        <button type="button" class="menu-item" id="restore-button"><span aria-hidden="true">⬆</span> Restore backup</button>
+                        <button type="button" class="menu-item" id="tips-button" hidden><span aria-hidden="true">💡</span> Show editing tip</button>
+                        <hr>
+                        <button type="button" class="menu-item danger" id="reset-button"><span aria-hidden="true">↺</span> Reset portfolio</button>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The portfolio is rendered here by creator.js -->
+    <main class="editor-frame" aria-label="Portfolio editor">
+        <div class="editor-hint" id="editor-hint">
+            <span class="hint-icon" aria-hidden="true">✎</span>
+            <p><strong>Editing view.</strong> Click any <span class="hint-chip">✎ Edit</span> button to change text, or <span class="hint-chip dashed">+ Add</span> to add things. Use <strong>Preview</strong> to see your finished site.</p>
+            <button type="button" class="hint-close" id="hint-close" aria-label="Hide this tip">×</button>
+        </div>
+        <div id="editor-canvas" tabindex="-1"></div>
     </main>
 
 
-    <!-- Main Edit Modal -->
-    <div class="edit-modal-overlay" id="edit-modal">
+    <!-- Hidden file inputs (kept OUTSIDE clickable areas to avoid double file pickers) -->
+    <input type="file" id="photo-input" accept="image/png, image/jpeg, image/webp" hidden>
+    <input type="file" id="project-image-input" accept="image/png, image/jpeg, image/webp" hidden>
+    <input type="file" id="restore-input" accept="application/json,.json" hidden>
 
-        <div class="edit-modal">
 
-            <div class="edit-modal-header">
-
+    <!-- Text field dialog (name, title, about, links, section names) -->
+    <dialog class="modal" id="field-modal" aria-labelledby="field-modal-title">
+        <form method="dialog" id="field-form" novalidate>
+            <div class="modal-header">
                 <div>
-                    <p class="edit-modal-label">
-                        PORTFOLIO EDITOR
-                    </p>
+                    <p class="modal-label">PORTFOLIO EDITOR</p>
+                    <h2 id="field-modal-title">Edit your information</h2>
+                </div>
+                <button type="button" class="modal-close" data-close aria-label="Close dialog">×</button>
+            </div>
 
-                    <h2 id="edit-modal-title">
-                        Edit your information
-                    </h2>
+            <div class="modal-body">
+                <div class="field">
+                    <label for="field-input" id="field-label">Your information</label>
+                    <input type="text" id="field-input" autocomplete="off" aria-describedby="field-help field-error">
+                    <textarea id="field-textarea" rows="6" aria-describedby="field-help field-error" hidden></textarea>
+                    <p class="field-error" id="field-error" role="alert"></p>
+                    <p class="field-hint" id="field-help">This information will appear on your portfolio.</p>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" data-close>Cancel</button>
+                <button type="submit" class="btn-save" id="field-save">Save Changes</button>
+            </div>
+        </form>
+    </dialog>
+
+
+    <!-- Project dialog -->
+    <dialog class="modal modal-wide" id="project-modal" aria-labelledby="project-modal-title">
+        <form method="dialog" id="project-form" novalidate>
+            <div class="modal-header">
+                <div>
+                    <p class="modal-label">PROJECT EDITOR</p>
+                    <h2 id="project-modal-title">Edit Project</h2>
+                </div>
+                <button type="button" class="modal-close" data-close aria-label="Close dialog">×</button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="field">
+                    <label for="project-title-input">Project title</label>
+                    <input type="text" id="project-title-input" maxlength="100" placeholder="e.g. Network Security Audit" aria-describedby="project-title-error">
+                    <p class="field-error" id="project-title-error" role="alert"></p>
                 </div>
 
-                <button
-                    class="edit-modal-close"
-                    id="edit-modal-close">
-                    ×
-                </button>
+                <div class="field">
+                    <label for="project-description-input">Short description <span class="char-count" id="project-description-count"></span></label>
+                    <textarea id="project-description-input" rows="4" maxlength="600" placeholder="What did you create, and why does it matter?"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="project-link-input">Project link <span class="optional">(optional)</span></label>
+                    <input type="url" id="project-link-input" placeholder="https://github.com/you/project" aria-describedby="project-link-help project-link-error">
+                    <p class="field-error" id="project-link-error" role="alert"></p>
+                    <p class="field-hint" id="project-link-help">GitHub, a live website, a report, or a presentation. Must start with https:// or http://</p>
+                </div>
+
+                <div class="field">
+                    <span class="field-title" id="project-image-label">Project image <span class="optional">(optional)</span></span>
+                    <div class="image-field">
+                        <div class="image-field-preview" id="project-image-preview">No image</div>
+                        <div>
+                            <div class="image-field-actions">
+                                <button type="button" class="tool-button" id="project-image-choose">Choose image</button>
+                                <input type="file" id="project-draft-image-input" accept="image/png, image/jpeg, image/webp" hidden>
+                                <button type="button" class="tool-button danger" id="project-image-remove">Remove</button>
+                            </div>
+                            <div class="image-field-actions" style="margin-top:10px" role="group" aria-labelledby="project-fit-label">
+                                <span class="field-hint" id="project-fit-label" style="margin:0">Image fit:</span>
+                                <span class="ed-segment">
+                                    <button type="button" data-fit="cover" aria-pressed="true" title="Fill the area (edges may be cropped)">Cover</button>
+                                    <button type="button" data-fit="contain" aria-pressed="false" title="Show the whole image (good for logos and diagrams)">Contain</button>
+                                </span>
+                            </div>
+                            <p class="field-hint">JPG, PNG or WebP, up to 10&nbsp;MB. Images are compressed automatically.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="field-divider">CASE STUDY DETAILS (OPTIONAL)</p>
+
+                <div class="field">
+                    <label for="project-tech-input">Technologies used</label>
+                    <input type="text" id="project-tech-input" maxlength="200" placeholder="Python, Wireshark, AWS">
+                    <p class="field-hint">Separate with commas. Each one becomes a tag.</p>
+                </div>
+
+                <div class="field">
+                    <label for="project-process-input">Process</label>
+                    <textarea id="project-process-input" rows="3" maxlength="1500" placeholder="How did you approach the problem?"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="project-results-input">Results / outcome</label>
+                    <textarea id="project-results-input" rows="3" maxlength="800" placeholder="What did you achieve or learn?"></textarea>
+                </div>
 
             </div>
 
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" data-close>Cancel</button>
+                <button type="submit" class="btn-save" id="project-save">Save Project</button>
+            </div>
+        </form>
+    </dialog>
 
-            <div class="edit-modal-body">
 
-                <label
-                    id="edit-input-label"
-                    for="edit-input">
-                    Your information
-                </label>
-
-                <input
-                    type="text"
-                    id="edit-input"
-                    class="edit-modal-input"
-                    autocomplete="off"
-                >
-
-                <textarea
-                    id="edit-textarea"
-                    class="edit-modal-textarea"
-                    rows="5">
-                </textarea>
-
-                <p
-                    class="edit-modal-help"
-                    id="edit-modal-help">
-                    This information will appear on your portfolio.
-                </p>
-
+    <!-- Section entry dialog (skills, education, experience, certifications, custom) -->
+    <dialog class="modal" id="entry-modal" aria-labelledby="entry-modal-title">
+        <form method="dialog" id="entry-form" novalidate>
+            <div class="modal-header">
+                <div>
+                    <p class="modal-label" id="entry-modal-label">SECTION ENTRY</p>
+                    <h2 id="entry-modal-title">Add entry</h2>
+                </div>
+                <button type="button" class="modal-close" data-close aria-label="Close dialog">×</button>
             </div>
 
+            <div class="modal-body">
+                <div class="field">
+                    <label for="entry-title-input" id="entry-title-label">Title</label>
+                    <input type="text" id="entry-title-input" maxlength="120" aria-describedby="entry-error">
+                </div>
 
-            <div class="edit-modal-actions">
+                <div class="field" id="entry-meta-field">
+                    <label for="entry-meta-input" id="entry-meta-label">Date / organization <span class="optional">(optional)</span></label>
+                    <input type="text" id="entry-meta-input" maxlength="120">
+                </div>
 
-                <button
-                    class="edit-modal-cancel"
-                    id="edit-modal-cancel">
-                    Cancel
-                </button>
+                <div class="field">
+                    <label for="entry-description-input" id="entry-description-label">Description</label>
+                    <textarea id="entry-description-input" rows="5" maxlength="1000" aria-describedby="entry-description-help"></textarea>
+                    <p class="field-hint" id="entry-description-help"></p>
+                </div>
 
-                <button
-                    class="edit-modal-save"
-                    id="edit-modal-save">
-                    Save Changes
-                </button>
-
+                <p class="field-error" id="entry-error" role="alert"></p>
             </div>
 
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" data-close>Cancel</button>
+                <button type="submit" class="btn-save">Save Entry</button>
+            </div>
+        </form>
+    </dialog>
+
+
+    <!-- Publish guide -->
+    <dialog class="modal modal-wide" id="guide-modal" aria-labelledby="guide-modal-title">
+        <div class="modal-header">
+            <div>
+                <p class="modal-label" id="guide-modal-label">PUBLISH WITH GITHUB PAGES</p>
+                <h2 id="guide-modal-title">Put your portfolio online</h2>
+            </div>
+            <button type="button" class="modal-close" data-close aria-label="Close dialog">×</button>
         </div>
 
+        <div class="modal-body">
+            <p class="guide-callout info" id="guide-export-note" hidden>
+                <strong>Your file is downloading:</strong> look for <code>index.html</code> in your Downloads
+                folder. Double-click it to check that it opens correctly in your browser.
+            </p>
+
+            <ol class="guide-steps" style="margin-top:14px">
+                <li>Go to <strong>github.com</strong> and sign in (or create a free account).</li>
+                <li>Click <strong>+</strong> (top right) &rarr; <strong>New repository</strong>. Name it, for example, <code>my-portfolio</code>. Choose <strong>Public</strong> and click <strong>Create repository</strong>.</li>
+                <li>Click <strong>uploading an existing file</strong> (or <strong>Add file &rarr; Upload files</strong>) and drag in the <code>index.html</code> you exported. Click <strong>Commit changes</strong>.</li>
+                <li>Open <strong>Settings &rarr; Pages</strong>. Under <em>Build and deployment</em>, choose <strong>Deploy from a branch</strong>, branch <strong>main</strong>, folder <strong>/ (root)</strong>, then <strong>Save</strong>.</li>
+                <li>Wait 1&ndash;10 minutes, then refresh the Pages screen. Your address appears at the top, like <code>https://your-username.github.io/my-portfolio/</code>.</li>
+                <li>Open the link to check it, then share it with your professor.</li>
+            </ol>
+
+            <p class="guide-callout info">
+                <strong>To update later:</strong> make changes here, export again, and upload the new
+                <code>index.html</code> to the same repository (it replaces the old one). Changes can take a few minutes to appear.
+            </p>
+
+            <p class="guide-callout warn">
+                <strong>Remember:</strong> a GitHub Pages site is <strong>public</strong>. Anyone with the link can see it.
+                Do not include your home address, phone number, student ID or other private information.
+                Only upload the exported <code>index.html</code> &mdash; not the Portfolio Creator's own files.
+            </p>
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" class="btn-save" data-close>Got it</button>
+        </div>
+    </dialog>
+
+
+    <!-- Preview layer: shows the exact exported HTML -->
+    <div class="preview-layer" id="preview-layer" hidden role="region" aria-label="Portfolio preview">
+        <div class="preview-bar">
+            <button type="button" class="toolbar-button preview-back" id="preview-back">← Back to Editor</button>
+            <span class="preview-title">Preview &mdash; this is exactly what your exported website will look like</span>
+            <div class="device-toggle" role="group" aria-label="Preview size">
+                <button type="button" data-device="desktop" aria-pressed="true">Desktop</button>
+                <button type="button" data-device="mobile" aria-pressed="false">Mobile</button>
+            </div>
+            <button type="button" class="toolbar-button export-button" id="preview-export">Export Portfolio</button>
+        </div>
+        <div class="preview-stage" id="preview-stage">
+            <iframe id="preview-frame" title="Portfolio preview" sandbox="allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
     </div>
 
 
-    <!-- Project Editor Modal -->
-    <div class="edit-modal-overlay" id="project-modal">
-
-        <div class="edit-modal">
-
-            <div class="edit-modal-header">
-
-                <div>
-                    <p class="edit-modal-label">
-                        PROJECT EDITOR
-                    </p>
-
-                    <h2 id="project-modal-title">
-                        Edit Project
-                    </h2>
-                </div>
-
-                <button
-                    class="edit-modal-close"
-                    id="project-modal-close">
-                    ×
-                </button>
-
-            </div>
-
-
-            <div class="edit-modal-body">
-
-                <label for="project-title-input">
-                    Project Title
-                </label>
-
-                <input
-                    type="text"
-                    id="project-title-input"
-                    class="edit-modal-input"
-                    placeholder="My Project"
-                >
-
-
-                <label
-                    for="project-description-input"
-                    style="margin-top: 18px;">
-                    Description
-                </label>
-
-                <textarea
-                    id="project-description-input"
-                    class="edit-modal-textarea"
-                    rows="5"
-                    style="display: block;"
-                    placeholder="Describe what you created and what you learned.">
-                </textarea>
-
-
-                <label
-                    for="project-link-input"
-                    style="margin-top: 18px;">
-                    Project Link
-                </label>
-
-                <input
-                    type="url"
-                    id="project-link-input"
-                    class="edit-modal-input"
-                    placeholder="https://..."
-                >
-
-                <p class="edit-modal-help">
-                    You can link to GitHub, a live website, report,
-                    presentation, or another project page.
-                </p>
-
-            </div>
-
-
-            <div class="edit-modal-actions">
-
-                <button
-                    class="edit-modal-cancel"
-                    id="project-modal-cancel">
-                    Cancel
-                </button>
-
-                <button
-                    class="edit-modal-save"
-                    id="project-modal-save">
-                    Save Project
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
+    <div class="toast-region" id="toast-region" aria-live="polite"></div>
 
     <script src="creator.js"></script>
 
