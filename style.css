@@ -1188,6 +1188,12 @@ footer {
     cursor: pointer;
 }
 
+.menu-item > span[aria-hidden] {
+    width: 20px;
+    flex: none;
+    text-align: center;
+}
+
 .menu-item:hover,
 .menu-item:focus-visible {
     background: #f1f5f9;
@@ -1541,6 +1547,119 @@ footer {
     font-size: 13px;
     opacity: 0.75;
     margin-bottom: 14px;
+}
+
+.ed-name-size {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: -2px 0 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.ed-size-label {
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10.5px;
+}
+
+.ed-name-size .ed-segment button {
+    min-width: 30px;
+}
+
+.ed-add-line {
+    margin-top: 6px;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+.ed-size-hint {
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ed-size-tip {
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 700;
+    font-size: 11px;
+}
+
+.ed-add-big {
+    display: flex;
+    width: 100%;
+    max-width: 560px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    gap: 14px;
+    text-align: left;
+}
+
+.ed-add-big .ed-plus {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.ed-add-big strong {
+    display: block;
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.ed-add-big small {
+    display: block;
+    margin-top: 2px;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ed-ideas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.ed-ideas > span {
+    margin-right: 4px;
+    font-weight: 700;
+    opacity: 0.75;
+}
+
+.ed-idea {
+    padding: 5px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 99px;
+    background: #ffffff;
+    color: #334155;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ed-idea:hover {
+    border-color: #2563eb;
+    color: #1d4ed8;
 }
 
 .ed-entry-tools {
@@ -3068,4 +3187,8 @@ footer {
     .hx-switch .hx-dot {
         display: none;
     }
+}
+
+.hx-faq-section {
+    padding-top: 24px;
 }

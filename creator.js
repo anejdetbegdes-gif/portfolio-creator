@@ -122,6 +122,8 @@
         return {
             version: 2,
             theme: "professional",
+            nameSize: "auto",
+            subtitles: [],
             name: DEFAULT.name,
             title: DEFAULT.title,
             about: DEFAULT.about,
@@ -297,6 +299,10 @@
         const state = {
             version: 2,
             theme: THEMES.includes(raw.theme) ? raw.theme : "professional",
+            nameSize: ["auto", "large", "medium", "small"].includes(raw.nameSize) ? raw.nameSize : "auto",
+            subtitles: Array.isArray(raw.subtitles)
+                ? raw.subtitles.map(function (t) { return str(t, 120).trim(); }).filter(Boolean).slice(0, 3)
+                : [],
             name: str(raw.name, 80).trim() || base.name,
             title: str(raw.title, 120).trim() || base.title,
             about: typeof raw.about === "string" ? str(raw.about, 1500) : base.about,
@@ -587,13 +593,11 @@
 .pf-project-desc { color: var(--muted); font-size: 15px; line-height: 1.7; white-space: pre-line; }
 .pf-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .pf-chips li { padding: 5px 10px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-ink); font-size: 12px; font-weight: 700; line-height: 1.3; }
-.pf-details { border-top: 1px solid var(--line); padding-top: 12px; }
-.pf-details summary { cursor: pointer; color: var(--accent-ink); font-size: 14px; font-weight: 700; list-style: none; }
-.pf-details summary::-webkit-details-marker { display: none; }
-.pf-details summary::after { content: " +"; }
-.pf-details[open] summary::after { content: " –"; }
-.pf-details h4 { margin-top: 14px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); font-family: var(--font-body); }
-.pf-details p { margin-top: 4px; color: var(--muted); font-size: 14.5px; line-height: 1.7; white-space: pre-line; }
+.pf-case { display: grid; gap: 12px; border-top: 1px solid var(--line); padding-top: 14px; }
+.pf-case h4 { margin-bottom: 4px; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); font-family: var(--font-body); }
+.pf-case p { color: var(--muted); font-size: 14.5px; line-height: 1.7; white-space: pre-line; }
+.pf-case-results { padding: 12px 14px; border-radius: calc(var(--radius) * .6); background: var(--chip-bg); }
+.pf-case-results p { color: var(--text-2); }
 .pf-project-link { margin-top: auto; padding-top: 4px; color: var(--accent-ink); font-size: 14px; font-weight: 800; text-decoration: none; align-self: flex-start; }
 .pf-project-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -695,7 +699,8 @@
 .t-editorial .pf-timeline h3, .t-editorial .pf-card h3, .t-editorial .pf-skill-group h3 { font-weight: 500; font-size: 22px; }
 .t-editorial .pf-skill-group, .t-editorial .pf-card { background: transparent; border: 0; border-top: 1px solid var(--line-strong); padding: 18px 0 0; }
 .t-editorial .pf-contact h2 { font-weight: 500; font-size: clamp(36px, 6vw, 64px); }
-.t-editorial .pf-details summary { color: var(--text); }
+.t-editorial .pf-case h4 { color: var(--accent); }
+.t-editorial .pf-case-results { background: transparent; padding: 0 0 0 14px; border-left: 2px solid var(--accent); border-radius: 0; }
 
 /* ---------- THEME 3: MODERN DARK ---------- */
 .pf.t-dark {
@@ -735,12 +740,27 @@
 .t-dark .pf-ph-1 { background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.6), transparent 45%), #151822; }
 .t-dark .pf-ph-2 { background: radial-gradient(circle at 70% 70%, rgba(244,114,182,.55), transparent 45%), #151822; }
 .t-dark .pf-media.fit-contain { background: #0f1118; }
+.t-dark .pf-case h4 { font-family: var(--font-mono); letter-spacing: .04em; text-transform: none; color: #67e8f9; }
+.t-dark .pf-case-results { border: 1px solid rgba(167,139,250,.22); }
 .t-dark .pf-chips li { border: 1px solid rgba(167,139,250,.22); font-family: var(--font-mono); font-weight: 500; }
 .t-dark .pf-timeline > li::before { background: #67e8f9; box-shadow: 0 0 0 4px var(--bg-alt), 0 0 14px rgba(103,232,249,.8); }
 .t-dark .pf-section:not(.pf-alt) .pf-timeline > li::before { box-shadow: 0 0 0 4px var(--bg), 0 0 14px rgba(103,232,249,.8); }
 .t-dark .pf-meta { color: #67e8f9; }
 .t-dark .pf-contact { background: radial-gradient(600px circle at 50% 120%, rgba(139,92,246,.25), transparent 70%); }
 .t-dark .pf-skill-group, .t-dark .pf-card { background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)); }
+
+/* ---------- EXTRA LINES UNDER THE TITLE ---------- */
+.pf-subtitles { margin: -22px 0 30px; display: grid; gap: 3px; justify-items: start; }
+.pf-subtitles.is-empty { margin-top: -18px; }
+.pf-subtitle { color: var(--muted); font-size: 17px; font-weight: 500; line-height: 1.5; }
+.t-editorial .pf-subtitle { font-family: var(--font-head); font-style: italic; font-size: 19px; color: var(--text-2); }
+.t-editorial .pf-subtitles { margin-top: -14px; }
+
+/* ---------- NAME SIZE (chosen by the student) ---------- */
+.pf-size-medium .pf-name { font-size: clamp(34px, 4.8vw, 54px); }
+.pf-size-small .pf-name { font-size: clamp(30px, 3.8vw, 42px); letter-spacing: -.025em; }
+.t-editorial.pf-size-medium .pf-name { font-size: clamp(38px, 5.6vw, 66px); }
+.t-editorial.pf-size-small .pf-name { font-size: clamp(32px, 4.4vw, 50px); }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 860px) {
@@ -763,6 +783,8 @@
   .pf-nav-links { gap: 18px; }
 }
 @media (max-width: 520px) {
+  .pf-size-medium .pf-name, .t-editorial.pf-size-medium .pf-name { font-size: 34px; }
+  .pf-size-small .pf-name, .t-editorial.pf-size-small .pf-name { font-size: 29px; }
   .pf-wrap { width: calc(100% - 32px); }
   .pf-nav-inner { height: 56px; }
   .pf-nav-links a:not(.pf-nav-contact) { display: none; }
@@ -842,6 +864,41 @@
             ' aria-label="' + esc(label) + '">✎ Edit</button>';
     }
 
+    // Auto: picks a size from the name's length so long names never look oversized
+    function effectiveNameSize(s) {
+        if (s.nameSize && s.nameSize !== "auto") return s.nameSize;
+        const n = (s.name || "").trim().length;
+        return n <= 16 ? "large" : (n <= 26 ? "medium" : "small");
+    }
+
+    function nameSizeControl(s, name) {
+        const sizes = [["auto", "Auto", "Size chosen from the length of your name"], ["large", "L", "Large"], ["medium", "M", "Medium"], ["small", "S", "Small"]];
+        const current = s.nameSize || "auto";
+        const tip = current === "auto"
+            ? '<span class="ed-size-hint">Auto = ' + ({ large: "Large", medium: "Medium", small: "Small" })[effectiveNameSize(s)] + " for your name</span>" : "";
+        return '<div class="ed-name-size" role="group" aria-label="Name options">' +
+            '<button type="button" class="ed-btn" data-action="edit-name" aria-label="Edit name">✎ Edit name</button>' +
+            '<span class="ed-size-label">Size</span>' +
+            '<span class="ed-segment">' + sizes.map(function (sz) {
+                return '<button type="button" data-action="name-size" data-size="' + sz[0] + '" aria-pressed="' + (current === sz[0]) + '" title="' + sz[2] + '">' + sz[1] + "</button>";
+            }).join("") + "</span>" + tip + "</div>";
+    }
+
+    function renderSubtitles(s, edit) {
+        const lines = s.subtitles || [];
+        if (!lines.length && !edit) return "";
+        let html = lines.map(function (line, i) {
+            return '<p class="pf-subtitle">' + esc(line) + (edit
+                ? ' <button type="button" class="ed-btn ed-icon" data-action="subtitle-edit" data-key="' + i + '" aria-label="Edit line ' + (i + 1) + '">✎</button>' +
+                  '<button type="button" class="ed-btn ed-icon ed-danger" data-action="subtitle-remove" data-key="' + i + '" aria-label="Remove line ' + (i + 1) + '">×</button>'
+                : "") + "</p>";
+        }).join("");
+        if (edit && lines.length < 3) {
+            html += '<button type="button" class="ed-add ed-add-line" data-action="subtitle-add">+ Add another line (degree, minor, Ph.D. …)</button>';
+        }
+        return '<div class="pf-subtitles' + (lines.length ? "" : " is-empty") + '">' + html + "</div>";
+    }
+
     function renderHero(s, edit) {
         const name = s.name.trim() || DEFAULT.name;
         const aboutIsPlaceholder = isDefaultAbout(s.about);
@@ -891,8 +948,10 @@
             '<div class="pf-wrap pf-hero-grid">' +
             '<div class="pf-hero-text">' +
             '<p class="pf-eyebrow">' + esc(eyebrow) + "</p>" +
-            '<h1 class="pf-name"><span class="pf-name-text">' + esc(name) + "</span>" + (edit ? editButton("edit-name", "Edit name") : "") + "</h1>" +
+            '<h1 class="pf-name"><span class="pf-name-text">' + esc(name) + "</span></h1>" +
+            (edit ? nameSizeControl(s, name) : "") +
             '<p class="pf-title">' + esc(s.title) + (edit ? editButton("edit-title", "Edit title") : "") + "</p>" +
+            renderSubtitles(s, edit) +
             about +
             renderLinks(s, edit) +
             "</div>" +
@@ -939,10 +998,10 @@
 
         let details = "";
         if (p.process.trim() || p.results.trim()) {
-            details = '<details class="pf-details"><summary>Process &amp; results</summary>' +
-                (p.process.trim() ? "<h4>Process</h4><p>" + esc(p.process.trim()) + "</p>" : "") +
-                (p.results.trim() ? "<h4>Results</h4><p>" + esc(p.results.trim()) + "</p>" : "") +
-                "</details>";
+            details = '<div class="pf-case">' +
+                (p.process.trim() ? '<div class="pf-case-block"><h4>Process</h4><p>' + esc(p.process.trim()) + "</p></div>" : "") +
+                (p.results.trim() ? '<div class="pf-case-block pf-case-results"><h4>Results</h4><p>' + esc(p.results.trim()) + "</p></div>" : "") +
+                "</div>";
         }
 
         return '<article class="pf-project' + (edit && placeholder ? " ed-placeholder-card" : "") + '" data-id="' + id + '">' +
@@ -1085,15 +1144,22 @@
         let addPanel = "";
         if (edit) {
             const missing = SECTION_KEYS.filter(function (k) { return s.sections[k].length === 0; });
+            const used = s.sections.custom.map(function (c) { return c.name.toLowerCase(); });
+            const ideas = ["Volunteer Work", "Awards", "Leadership", "Languages", "Publications", "Research"]
+                .filter(function (n) { return used.indexOf(n.toLowerCase()) === -1; });
             addPanel = '<div class="ed-add-sections"><div class="pf-wrap">' +
                 "<h2>Add more sections</h2>" +
-                "<p>Optional. Empty sections are never shown on your published portfolio.</p>" +
-                '<div class="ed-section-tools">' +
+                "<p>Optional. Add as many as you need. Empty sections are never shown on your published portfolio.</p>" +
+                (missing.length ? '<div class="ed-section-tools">' +
                 missing.map(function (k) {
                     return '<button type="button" class="ed-add" data-action="entry-add" data-type="' + k + '">+ ' + esc(SECTION_TYPES[k].label) + "</button>";
-                }).join("") +
-                '<button type="button" class="ed-add" data-action="custom-add">+ Custom section</button>' +
-                "</div></div></div>";
+                }).join("") + "</div>" : "") +
+                '<button type="button" class="ed-add ed-add-big" data-action="custom-add">' +
+                '<span class="ed-plus" aria-hidden="true">+</span><span><strong>Add your own section</strong><small>Give it any title, then add entries</small></span></button>' +
+                (ideas.length ? '<div class="ed-ideas"><span>Quick ideas:</span>' + ideas.map(function (n) {
+                    return '<button type="button" class="ed-idea" data-action="custom-quick" data-name="' + esc(n) + '">+ ' + esc(n) + "</button>";
+                }).join("") + "</div>" : "") +
+                "</div></div>";
         }
 
         // CONTACT
@@ -1120,7 +1186,7 @@
             '<a href="#pf-top">Back to top ↑</a>' +
             "</div></footer>";
 
-        return '<div class="pf t-' + s.theme + (edit ? " is-editing" : "") + '"' + (edit ? "" : ' id="pf-top"') + ">" +
+        return '<div class="pf t-' + s.theme + " pf-size-" + effectiveNameSize(s) + (edit ? " is-editing" : "") + '"' + (edit ? "" : ' id="pf-top"') + ">" +
             navHtml +
             "<main>" + renderHero(s, edit) + sectionsHtml + addPanel + contact + "</main>" +
             footer +
@@ -1389,6 +1455,11 @@
             placeholder: "you@example.com",
             help: "Visitors can click to email you. Your portfolio is public, so consider a school or professional address. Leave empty to remove."
         },
+        subtitle: {
+            title: "Add a line under your title", label: "Line", max: 120, required: "Please type the line, or select Cancel.",
+            placeholder: "Minor in Statistics",
+            help: "Examples: Minor in Statistics · B.S. Biology, State University · Ph.D. Applicant, Fall 2028"
+        },
         customName: {
             title: "Name your section", label: "Section name", max: 60, required: "Please give the section a name.",
             placeholder: "Volunteer Work", help: "Examples: Volunteer Work, Awards, Publications, Leadership."
@@ -1411,6 +1482,7 @@
         if (kind === "about") current = isDefaultAbout(state.about) ? "" : state.about;
         if (LINK_TYPES[kind]) current = state.links[kind] || "";
         if (kind === "customName") current = extra && extra.currentName ? extra.currentName : "";
+        if (kind === "subtitle") current = extra && extra.index != null ? (state.subtitles[extra.index] || "") : "";
 
         const input = cfg.multiline ? fieldTextarea : fieldInput;
         fieldTextarea.hidden = !cfg.multiline;
@@ -1467,6 +1539,12 @@
         else if (kind === "title") state.title = value;
         else if (kind === "about") state.about = value;
         else if (LINK_TYPES[kind]) state.links[kind] = value;
+        else if (kind === "subtitle") {
+            const idx = fieldContext.index;
+            if (idx != null && state.subtitles[idx] != null) state.subtitles[idx] = value;
+            else if (state.subtitles.length < 3) state.subtitles.push(value);
+            pendingFocus = { action: idx != null ? "subtitle-edit" : "subtitle-add", key: idx != null ? String(idx) : null, id: null, type: null, section: null, fit: null, elementId: null };
+        }
         else if (kind === "customName") {
             if (fieldContext.sectionId) {
                 const section = findCustom(fieldContext.sectionId);
@@ -2110,6 +2188,37 @@
             }
 
             case "custom-add": openFieldDialog("customName", control); break;
+
+            case "custom-quick": {
+                const nameQ = String(control.dataset.name || "").slice(0, 60);
+                if (!nameQ) break;
+                const sectionQ = { id: uid(), name: nameQ, entries: [] };
+                state.sections.custom.push(sectionQ);
+                changed();
+                render({ action: "entry-add", type: "custom", section: sectionQ.id, id: null, key: null, fit: null, elementId: null });
+                break;
+            }
+
+            case "subtitle-add": openFieldDialog("subtitle", control, { index: null }); break;
+            case "subtitle-edit": openFieldDialog("subtitle", control, { index: Number(control.dataset.key) }); break;
+            case "subtitle-remove": {
+                const idx = Number(control.dataset.key);
+                if (!(idx >= 0 && idx < state.subtitles.length)) break;
+                if (!window.confirm("Remove the line \"" + state.subtitles[idx] + "\"?")) break;
+                state.subtitles.splice(idx, 1);
+                changed();
+                render({ action: "subtitle-add", id: null, key: null, type: null, section: null, fit: null, elementId: null });
+                break;
+            }
+
+            case "name-size": {
+                const size = control.dataset.size;
+                if (["auto", "large", "medium", "small"].indexOf(size) === -1) break;
+                state.nameSize = size;
+                changed();
+                render(describeControl(control));
+                break;
+            }
 
             case "custom-rename": {
                 const section = findCustom(control.dataset.section);
