@@ -6,7 +6,7 @@
     <title>Portfolio Creator</title>
     <meta name="description" content="Create a professional student portfolio website without coding, then publish it free with GitHub Pages.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232563eb'/%3E%3Cpath d='M10.5 24V8.5h6.6a5 5 0 0 1 0 10H14' stroke='%23fff' stroke-width='3.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 19.2l7 2.6-3 1.2-1.2 3z' fill='%23bfdbfe' stroke='%23bfdbfe' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 
 <body class="home-body">
@@ -110,13 +110,17 @@
                 <p class="hx-how-foot">
                     New to GitHub? Click <strong>Draft &rarr; How to publish</strong> in the editor for a step-by-step guide.
                 </p>
+                <div class="hx-guide-cta">
+                    <a class="hx-btn hx-btn-blue" href="guide.html">Step-by-Step Guide</a>
+                </div>
             </div>
         </section>
 
 
         <!-- TEMPLATES (three designs) -->
-        <section class="hx-templates" id="templates" aria-label="The three portfolio designs">
+        <section class="hx-templates" id="templates" aria-labelledby="templates-title">
             <div class="hx-wrap">
+                <h2 class="hx-h2 hx-templates-title" id="templates-title">Choose your portfolio design</h2>
                 <div class="hx-switch" role="tablist" aria-label="Preview a design">
                     <button type="button" role="tab" aria-selected="true" data-theme="professional">
                         <span class="hx-dot hx-dot-professional" aria-hidden="true"></span>Professional
@@ -145,7 +149,7 @@
             </div>
 
             <div class="hx-example-cta">
-                <a class="hx-btn hx-btn-outline" href="example.html">View Example</a>
+                <a class="hx-btn hx-btn-blue" href="example.html">View Example</a>
             </div>
         </section>
 
@@ -153,7 +157,6 @@
         <!-- FAQ -->
         <section class="hx-section hx-faq-section" id="faq">
             <div class="hx-wrap hx-center">
-                <p class="hx-kicker">FAQ</p>
                 <h2 class="hx-h2">Frequently asked questions</h2>
 
                 <div class="hx-faq">

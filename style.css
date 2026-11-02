@@ -3272,3 +3272,272 @@ footer {
 .hx-cta .hx-h2 {
     margin-bottom: 28px;
 }
+
+
+/* v7: homepage title above designs, step-by-step guide button */
+.hx-templates-title {
+    margin-bottom: 36px;
+}
+
+.hx-guide-cta {
+    margin-top: 18px;
+    text-align: center;
+}
+
+
+/* ========================================
+   STEP-BY-STEP GUIDE PAGE (guide.html)
+======================================== */
+
+.guide-body {
+    background: #ffffff;
+}
+
+.gd-narrow {
+    max-width: 820px;
+}
+
+.gd-hero {
+    padding: 64px 0 36px;
+    text-align: center;
+    background: radial-gradient(800px 360px at 50% -10%, #dbeafe, transparent 70%);
+}
+
+.gd-title {
+    margin-bottom: 10px;
+}
+
+.gd-hero .hx-sub {
+    margin: 0 auto;
+}
+
+.gd-download {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 30px auto 0;
+    padding: 18px 20px;
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+    background: #eff6ff;
+    text-align: left;
+}
+
+.gd-download div {
+    flex: 1;
+}
+
+.gd-download strong {
+    display: block;
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.gd-download p {
+    color: #475569;
+    font-size: 13.5px;
+}
+
+.gd-doc-icon {
+    flex: none;
+    width: 44px;
+    height: 52px;
+    border-radius: 8px;
+    background: #dc2626;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.gd-download p a {
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.gd-layout {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 56px;
+    padding: 40px 0 90px;
+}
+
+.gd-toc {
+    position: sticky;
+    top: 92px;
+    align-self: start;
+    display: grid;
+    gap: 4px;
+}
+
+.gd-toc p {
+    margin-bottom: 6px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.gd-toc a {
+    padding: 7px 12px;
+    border-left: 2px solid #e2e8f0;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.gd-toc a:hover {
+    border-color: #2563eb;
+    color: #1d4ed8;
+}
+
+.gd-content {
+    max-width: 760px;
+}
+
+.gd-part {
+    padding-bottom: 36px;
+    margin-bottom: 36px;
+    border-bottom: 1px solid #e2e8f0;
+    scroll-margin-top: 84px;
+}
+
+.gd-part h2 {
+    margin-bottom: 18px;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+}
+
+.gd-steps {
+    list-style: none;
+    display: grid;
+    gap: 18px;
+}
+
+.gd-step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+}
+
+.gd-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    background: #2563eb;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.gd-step h3 {
+    margin: 4px 0 4px;
+    font-size: 17px;
+}
+
+.gd-step p,
+.gd-step li,
+.gd-part > p,
+.gd-checklist li {
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.gd-step ul {
+    margin: 6px 0 0 18px;
+}
+
+.gd-content code {
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-size: 13.5px;
+}
+
+.gd-note {
+    margin: 20px 0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    line-height: 1.65;
+}
+
+.gd-note.info {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1e3a8a;
+}
+
+.gd-note.warn {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    color: #78350f;
+}
+
+.gd-note.danger {
+    background: #fef2f2;
+    border: 2px solid #dc2626;
+    color: #7f1d1d;
+}
+
+.gd-note.danger p + p {
+    margin-top: 8px;
+}
+
+.gd-note-title {
+    color: #b91c1c;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.gd-lead {
+    margin-bottom: 12px;
+}
+
+.gd-checklist {
+    display: grid;
+    gap: 10px;
+    padding-left: 22px;
+}
+
+.gd-end {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+    .gd-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .gd-toc {
+        position: static;
+        padding: 14px 16px;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #f8fafc;
+    }
+}
+
+@media (max-width: 560px) {
+    .gd-download {
+        flex-wrap: wrap;
+    }
+
+    .gd-download .hx-btn {
+        width: 100%;
+    }
+
+    .gd-end .hx-btn {
+        width: 100%;
+    }
+}
