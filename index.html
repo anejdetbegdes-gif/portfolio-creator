@@ -6,7 +6,7 @@
     <title>Portfolio Creator</title>
     <meta name="description" content="Create a professional student portfolio website without coding, then publish it free with GitHub Pages.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232563eb'/%3E%3Cpath d='M10.5 24V8.5h6.6a5 5 0 0 1 0 10H14' stroke='%23fff' stroke-width='3.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 19.2l7 2.6-3 1.2-1.2 3z' fill='%23bfdbfe' stroke='%23bfdbfe' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 
 <body class="home-body">
@@ -36,8 +36,6 @@
         <section class="hx-hero">
             <div class="hx-wrap">
 
-                <p class="hx-kicker">STUDENT PORTFOLIO TOOL</p>
-
                 <h1 class="hx-title">Create your <em>student portfolio</em></h1>
 
                 <p class="hx-lead">
@@ -47,44 +45,17 @@
 
                 <div class="hx-ctas">
                     <a class="hx-btn hx-btn-blue" href="creator.html">Create My Portfolio →</a>
-                    <a class="hx-btn hx-btn-outline" href="example.html">View Example</a>
                 </div>
 
 
-                <div class="hx-switch" role="tablist" aria-label="Preview a design">
-                    <button type="button" role="tab" aria-selected="true" data-theme="professional">
-                        <span class="hx-dot hx-dot-professional" aria-hidden="true"></span>Professional
-                    </button>
-                    <button type="button" role="tab" aria-selected="false" tabindex="-1" data-theme="editorial">
-                        <span class="hx-dot hx-dot-editorial" aria-hidden="true"></span>Editorial
-                    </button>
-                    <button type="button" role="tab" aria-selected="false" tabindex="-1" data-theme="dark">
-                        <span class="hx-dot hx-dot-dark" aria-hidden="true"></span>Modern Dark
-                    </button>
-                </div>
             </div>
 
-            <div class="hx-show">
-                <div class="hx-browser" role="tabpanel" aria-label="Sample portfolio preview">
-                    <div class="hx-browser-bar" aria-hidden="true">
-                        <i></i><i></i><i></i>
-                        <span>your-name.github.io/portfolio</span>
-                    </div>
-                    <img id="hx-desktop" src="home-assets/desktop-professional.jpg" width="1280" height="720"
-                        alt="A sample student portfolio in the Professional Light design">
-                </div>
-                <div class="hx-phone" aria-hidden="true">
-                    <img id="hx-mobile" src="home-assets/mobile-professional.jpg" width="390" height="780" alt="">
-                </div>
-                <a class="hx-use" id="hx-use" href="creator.html?theme=professional">Start with this design →</a>
-            </div>
         </section>
 
 
         <!-- HOW IT WORKS -->
         <section class="hx-section hx-center" id="how-it-works">
             <div class="hx-wrap">
-                <p class="hx-kicker">HOW IT WORKS</p>
                 <h2 class="hx-h2">How to create your portfolio</h2>
                 <p class="hx-sub">You work in your web browser. There is nothing to install.</p>
 
@@ -143,6 +114,42 @@
         </section>
 
 
+        <!-- TEMPLATES (three designs) -->
+        <section class="hx-templates" id="templates" aria-label="The three portfolio designs">
+            <div class="hx-wrap">
+                <div class="hx-switch" role="tablist" aria-label="Preview a design">
+                    <button type="button" role="tab" aria-selected="true" data-theme="professional">
+                        <span class="hx-dot hx-dot-professional" aria-hidden="true"></span>Professional
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" tabindex="-1" data-theme="editorial">
+                        <span class="hx-dot hx-dot-editorial" aria-hidden="true"></span>Editorial
+                    </button>
+                    <button type="button" role="tab" aria-selected="false" tabindex="-1" data-theme="dark">
+                        <span class="hx-dot hx-dot-dark" aria-hidden="true"></span>Modern Dark
+                    </button>
+                </div>
+            </div>
+
+            <div class="hx-show">
+                <div class="hx-browser" role="tabpanel" aria-label="Sample portfolio preview">
+                    <div class="hx-browser-bar" aria-hidden="true">
+                        <i></i><i></i><i></i>
+                        <span>your-name.github.io/portfolio</span>
+                    </div>
+                    <img id="hx-desktop" src="home-assets/desktop-professional.jpg" width="1280" height="720"
+                        alt="A sample student portfolio in the Professional Light design">
+                </div>
+                <div class="hx-phone" aria-hidden="true">
+                    <img id="hx-mobile" src="home-assets/mobile-professional.jpg" width="390" height="780" alt="">
+                </div>
+            </div>
+
+            <div class="hx-example-cta">
+                <a class="hx-btn hx-btn-outline" href="example.html">View Example</a>
+            </div>
+        </section>
+
+
         <!-- FAQ -->
         <section class="hx-section hx-faq-section" id="faq">
             <div class="hx-wrap hx-center">
@@ -179,7 +186,6 @@
         <section class="hx-cta">
             <div class="hx-wrap">
                 <h2 class="hx-h2">Ready to start?</h2>
-                <p class="hx-sub">Open the editor and add your first project.</p>
                 <a class="hx-btn hx-btn-blue" href="creator.html">Create My Portfolio →</a>
             </div>
         </section>
@@ -196,12 +202,11 @@
 
 
     <script>
-        // Hero design switcher: swaps the sample screenshots and the "Start with this design" link.
+        // Design switcher: swaps the sample screenshots of the three designs.
         (function () {
             var tabs = Array.prototype.slice.call(document.querySelectorAll(".hx-switch [role=tab]"));
             var desktop = document.getElementById("hx-desktop");
             var mobile = document.getElementById("hx-mobile");
-            var use = document.getElementById("hx-use");
             var names = { professional: "Professional Light", editorial: "Editorial Minimal", dark: "Modern Dark" };
 
             // Preload the other screenshots so switching is instant
@@ -220,7 +225,6 @@
                 desktop.src = "home-assets/desktop-" + theme + ".jpg";
                 desktop.alt = "A sample student portfolio in the " + names[theme] + " design";
                 mobile.src = "home-assets/mobile-" + theme + ".jpg";
-                use.href = "creator.html?theme=" + theme;
             }
 
             tabs.forEach(function (tab, i) {
