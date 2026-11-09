@@ -61,7 +61,6 @@
         experience: {
             label: "Experience",
             nav: "Experience",
-            kicker: "Where I've worked",
             layout: "timeline",
             titleLabel: "Role & organization",
             titlePlaceholder: "IT Support Intern — Acme Corp",
@@ -72,7 +71,6 @@
         education: {
             label: "Education",
             nav: "Education",
-            kicker: "Studies",
             layout: "timeline",
             titleLabel: "Degree & school",
             titlePlaceholder: "M.S. Computer Science — State University",
@@ -83,7 +81,6 @@
         skills: {
             label: "Skills",
             nav: "Skills",
-            kicker: "Toolkit",
             layout: "skills",
             titleLabel: "Skill group",
             titlePlaceholder: "Programming",
@@ -95,7 +92,6 @@
         certifications: {
             label: "Certifications",
             nav: "Certifications",
-            kicker: "Credentials",
             layout: "cards",
             titleLabel: "Certification",
             titlePlaceholder: "CompTIA Security+",
@@ -109,7 +105,6 @@
 
     const CUSTOM_TYPE = {
         label: "Custom section",
-        kicker: "More about me",
         layout: "cards",
         titleLabel: "Title (optional)",
         titlePlaceholder: "Food Bank Volunteer",
@@ -446,7 +441,7 @@
             setStatus("error", message);
             if (manual || !lastSaveFailed) toast(message, "error", 7000);
             lastSaveFailed = true;
-            console.error(error);
+            console.warn("Draft not saved:", error && error.name);
             return false;
         }
 
@@ -571,7 +566,6 @@
 .pf-section { padding: 88px 0; }
 .pf-alt { background: var(--bg-alt); }
 .pf-section-head { margin-bottom: 36px; max-width: 720px; }
-.pf-kicker { color: var(--accent-ink); font-size: 12px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
 .pf-section-head h2 { font-size: clamp(28px, 4vw, 38px); line-height: 1.15; letter-spacing: -.025em; }
 .pf-section-intro { margin-top: 8px; color: var(--muted); }
 
@@ -668,11 +662,8 @@
 .t-editorial .pf-btn { background: transparent; border-color: var(--line-strong); font-weight: 600; }
 .t-editorial .pf-btn:hover { transform: none; background: var(--text); color: var(--bg); border-color: var(--text); }
 .t-editorial .pf-btn-primary { background: var(--btn-bg); box-shadow: none; }
-.t-editorial .pf-section-head { counter-increment: pf-sec; display: grid; grid-template-columns: 180px 1fr; gap: 24px; max-width: none; padding-top: 18px; border-top: 1px solid var(--line-strong); margin-bottom: 44px; }
-.t-editorial .pf-kicker { font-family: var(--font-head); font-style: italic; font-weight: 400; font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--text-2); }
-.t-editorial .pf-kicker::before { content: counter(pf-sec, decimal-leading-zero) " — "; color: var(--accent); font-style: normal; }
+.t-editorial .pf-section-head { max-width: none; padding-top: 18px; border-top: 1px solid var(--line-strong); margin-bottom: 44px; }
 .t-editorial .pf-section-head h2 { font-weight: 500; font-size: clamp(30px, 4.5vw, 46px); }
-.t-editorial .pf-section-intro { grid-column: 2; }
 .t-editorial .pf-projects { grid-template-columns: 1fr; gap: 0; counter-reset: pf-proj; }
 .t-editorial .pf-project { counter-increment: pf-proj; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.25fr); gap: 44px; align-items: start; padding: 36px 0; background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
 .t-editorial .pf-project:first-child { border-top: 0; padding-top: 0; }
@@ -717,10 +708,8 @@
   --shadow: none; --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
   color-scheme: dark;
 }
-.t-dark .pf-eyebrow, .t-dark .pf-kicker, .t-dark .pf-meta { font-family: var(--font-mono); letter-spacing: .02em; text-transform: none; font-weight: 600; }
+.t-dark .pf-eyebrow, .t-dark .pf-meta { font-family: var(--font-mono); letter-spacing: .02em; text-transform: none; font-weight: 600; }
 .t-dark .pf-eyebrow { color: #67e8f9; font-size: 14px; }
-.t-dark .pf-kicker { font-size: 13px; color: var(--accent-ink); }
-.t-dark .pf-kicker::before { content: "// "; color: var(--muted); }
 .t-dark .pf-name-text { background: linear-gradient(92deg, #ffffff 30%, #c4b5fd 70%, #67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
 .t-dark .pf-photo { width: 230px; border-radius: 32px; border: 0; background: linear-gradient(135deg, #312e81, #0e7490);
   box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 0 0 6px rgba(10,11,16,1), 0 0 0 7px rgba(167,139,250,.55), 0 30px 80px rgba(139,92,246,.28); }
@@ -778,8 +767,7 @@
   .t-dark .pf-project:first-child .pf-media { aspect-ratio: 16 / 10; min-height: 0; height: auto; }
   .t-dark .pf-project:first-child .pf-project-body { padding: 24px; }
   .t-editorial .pf-project { grid-template-columns: 1fr; gap: 20px; }
-  .t-editorial .pf-section-head, .t-editorial .pf-timeline > li { grid-template-columns: 1fr; gap: 6px; }
-  .t-editorial .pf-section-intro { grid-column: auto; }
+  .t-editorial .pf-timeline > li { grid-template-columns: 1fr; gap: 6px; }
   .pf-nav-links { gap: 18px; }
 }
 @media (max-width: 520px) {
@@ -804,7 +792,8 @@
 
 /* Editor-only adjustments (never present in the export) */
 .pf.is-editing { min-height: 0; }
-.pf.is-editing .pf-nav { position: relative; }
+.pf.is-editing .pf-nav { top: var(--pc-sticky-top, 0px); }
+.pf.is-editing [id^="pf-"] { scroll-margin-top: calc(var(--pc-sticky-top, 0px) + 64px); }
 .pf.is-editing .pf-project:hover { transform: none; }
 `;
 
@@ -902,8 +891,8 @@
     function renderHero(s, edit) {
         const name = s.name.trim() || DEFAULT.name;
         const aboutIsPlaceholder = isDefaultAbout(s.about);
-        const year = new Date().getFullYear();
-        const eyebrow = s.theme === "dark" ? "Hi, I'm" : (s.theme === "editorial" ? "Portfolio, " + year : "Portfolio");
+        // Only Modern Dark shows a small line above the name.
+        const eyebrow = s.theme === "dark" ? "Hi, I'm" : "";
 
         let about = "";
         if (edit) {
@@ -947,7 +936,7 @@
         return '<section class="pf-hero">' +
             '<div class="pf-wrap pf-hero-grid">' +
             '<div class="pf-hero-text">' +
-            '<p class="pf-eyebrow">' + esc(eyebrow) + "</p>" +
+            (eyebrow ? '<p class="pf-eyebrow">' + esc(eyebrow) + "</p>" : "") +
             '<h1 class="pf-name"><span class="pf-name-text">' + esc(name) + "</span></h1>" +
             (edit ? nameSizeControl(s, name) : "") +
             '<p class="pf-title">' + esc(s.title) + (edit ? editButton("edit-title", "Edit title") : "") + "</p>" +
@@ -1065,7 +1054,6 @@
         return '<section class="pf-section' + (opts.alt ? " pf-alt" : "") + '" id="' + opts.id + '" aria-labelledby="' + opts.id + '-h">' +
             '<div class="pf-wrap">' +
             '<div class="pf-section-head">' +
-            '<p class="pf-kicker">' + esc(opts.kicker) + "</p>" +
             "<div>" +
             '<h2 id="' + opts.id + '-h">' + opts.titleHtml + "</h2>" +
             (opts.intro ? '<p class="pf-section-intro">' + esc(opts.intro) + "</p>" : "") +
@@ -1097,7 +1085,7 @@
                 : '<p class="pf-section-intro">No projects yet.</p>';
 
             blocks.push({
-                id: "pf-projects", nav: "Work", kicker: "Selected work", titleHtml: "Projects",
+                id: "pf-projects", nav: "Work", titleHtml: "Projects",
                 intro: "A selection of my academic, professional and personal work.",
                 body: body,
                 tools: edit ? '<div class="ed-section-tools"><button type="button" class="ed-add" data-action="project-add">+ Add Project</button></div>' : ""
@@ -1111,7 +1099,7 @@
             if (!entries.length) return;
 
             blocks.push({
-                id: "pf-" + key, nav: cfg.nav, kicker: cfg.kicker, titleHtml: esc(cfg.label),
+                id: "pf-" + key, nav: cfg.nav, titleHtml: esc(cfg.label),
                 body: renderEntries(cfg.layout, entries, key, null, edit),
                 tools: edit ? '<div class="ed-section-tools"><button type="button" class="ed-add" data-action="entry-add" data-type="' + key + '">+ Add ' + esc(cfg.label) + " entry</button></div>" : ""
             });
@@ -1124,7 +1112,7 @@
 
             const sid = esc(section.id);
             blocks.push({
-                id: "pf-custom-" + (index + 1), nav: null, kicker: CUSTOM_TYPE.kicker,
+                id: "pf-custom-" + (index + 1), nav: null,
                 titleHtml: esc(section.name) + (edit
                     ? ' <button type="button" class="ed-btn ed-inline" data-action="custom-rename" data-section="' + sid + '" aria-label="Rename section ' + esc(section.name) + '">✎ Rename</button>' +
                       ' <button type="button" class="ed-btn ed-inline ed-danger" data-action="custom-remove" data-section="' + sid + '" aria-label="Remove section ' + esc(section.name) + '">Remove section</button>'
@@ -2325,6 +2313,24 @@
         document.querySelector(".settings-bar"),
         document.querySelector(".editor-frame")
     ];
+
+    // Keep the portfolio menu visible while scrolling the editor: it sticks
+    // just below the editor's own sticky bars (their height changes with
+    // screen width, so it is measured).
+    function updateStickyTop() {
+        let top = 0;
+        [".creator-toolbar", ".settings-bar"].forEach(function (sel) {
+            const el = document.querySelector(sel);
+            if (!el) return;
+            const cs = getComputedStyle(el);
+            if (cs.position === "sticky" || cs.position === "fixed") {
+                top = Math.max(top, (parseFloat(cs.top) || 0) + el.offsetHeight);
+            }
+        });
+        document.documentElement.style.setProperty("--pc-sticky-top", top + "px");
+    }
+    updateStickyTop();
+    window.addEventListener("resize", updateStickyTop);
 
     function setDevice(device) {
         previewStage.classList.toggle("is-mobile", device === "mobile");

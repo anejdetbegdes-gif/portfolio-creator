@@ -1232,6 +1232,8 @@ footer {
     border: 1px solid #dbe2ea;
     border-radius: 18px;
     overflow: hidden;
+    /* clip keeps the rounded corners without breaking the sticky portfolio menu */
+    overflow: clip;
     background: #ffffff;
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.10);
 }
@@ -2434,8 +2436,14 @@ footer {
     white-space: nowrap;
 }
 
+/* Each portfolio's menu stays visible while scrolling, just below the
+   site menu and the design switcher (height measured in example.html). */
 .example-stage .pf-nav {
-    position: relative;
+    top: var(--ex-sticky-top, 0px);
+}
+
+.example-stage [id^="ex-"] {
+    scroll-margin-top: calc(var(--ex-sticky-top, 0px) + 64px);
 }
 
 .example-stage .pf {
