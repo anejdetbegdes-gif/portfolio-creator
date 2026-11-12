@@ -20,104 +20,6 @@ body {
     margin: 0 auto;
 }
 
-
-/* NAVBAR */
-
-.navbar {
-    height: 76px;
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-}
-
-.nav-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 32px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #475569;
-    font-size: 14px;
-    font-weight: 600;
-    transition: 0.2s;
-}
-
-.nav-links a:hover {
-    color: #2563eb;
-}
-
-
-/* HERO */
-
-.hero {
-    min-height: 610px;
-    display: flex;
-    align-items: center;
-    background:
-        radial-gradient(circle at 85% 20%, #dbeafe 0%, transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
-    align-items: center;
-    padding: 80px 0;
-}
-
-.badge {
-    display: inline-block;
-    padding: 7px 13px;
-    background: #eff6ff;
-    color: #2563eb;
-    border: 1px solid #bfdbfe;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 22px;
-}
-
-.hero h1 {
-    font-size: clamp(42px, 5vw, 64px);
-    line-height: 1.05;
-    letter-spacing: -2.5px;
-    margin-bottom: 22px;
-}
-
-.hero h1 span {
-    display: block;
-    color: #2563eb;
-}
-
-.hero-description {
-    max-width: 590px;
-    color: #64748b;
-    font-size: 18px;
-    margin-bottom: 30px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 14px;
-    margin-bottom: 17px;
-}
-
 .button {
     display: inline-block;
     padding: 13px 21px;
@@ -139,154 +41,11 @@ body {
     transform: translateY(-2px);
 }
 
-.secondary {
-    background: white;
-    color: #0f172a;
-    border: 1px solid #cbd5e1;
-}
-
-.secondary:hover {
-    border-color: #2563eb;
-    color: #2563eb;
-}
-
-.small-text {
-    font-size: 13px;
-    color: #94a3b8;
-}
-
-
-/* PORTFOLIO PREVIEW */
-
-.preview-card {
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.12);
-    transform: rotate(1deg);
-}
-
-.browser-bar {
-    height: 44px;
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    padding: 0 14px;
-}
-
-.browser-bar > span {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #cbd5e1;
-}
-
-.browser-address {
-    margin-left: 10px;
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 6px;
-    padding: 4px 12px;
-    color: #94a3b8;
-    font-size: 10px;
-    flex: 1;
-}
-
-.mini-portfolio {
-    padding: 28px;
-}
-
-.mini-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
-}
-
-.mini-label {
-    color: #2563eb;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
-.mini-header h2 {
-    font-size: 27px;
-    margin: 3px 0;
-}
-
-.mini-header p {
-    color: #64748b;
-    font-size: 12px;
-}
-
-.avatar {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: #dbeafe;
-    color: #2563eb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-}
-
-.mini-about {
-    padding: 17px;
-    background: #f8fafc;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.mini-about h3,
-.projects-title {
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-
-.mini-about p,
-.mini-project p {
-    color: #64748b;
-    font-size: 10px;
-}
-
-.mini-projects {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.mini-project {
-    border: 1px solid #e2e8f0;
-    border-radius: 9px;
-    padding: 9px;
-}
-
 .project-image {
     height: 55px;
     border-radius: 6px;
     margin-bottom: 9px;
     background: linear-gradient(135deg, #2563eb, #93c5fd);
-}
-
-.project-image.second {
-    background: linear-gradient(135deg, #0f172a, #64748b);
-}
-
-.mini-project strong {
-    font-size: 11px;
-}
-
-
-/* HOW IT WORKS */
-
-.how-it-works {
-    padding: 90px 0;
-    background: white;
 }
 
 .section-label {
@@ -296,53 +55,6 @@ body {
     letter-spacing: 1.5px;
     margin-bottom: 8px;
 }
-
-.how-it-works > .container > h2 {
-    font-size: 34px;
-    letter-spacing: -1px;
-    margin-bottom: 40px;
-}
-
-.steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.step-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 13px;
-    padding: 25px;
-    transition: 0.2s;
-}
-
-.step-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-}
-
-.step-number {
-    width: 35px;
-    height: 35px;
-    background: #eff6ff;
-    color: #2563eb;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    margin-bottom: 17px;
-}
-
-.step-card h3 {
-    margin-bottom: 7px;
-}
-
-.step-card p {
-    color: #64748b;
-    font-size: 14px;
-}
-
 
 /* FOOTER */
 
@@ -363,70 +75,10 @@ footer {
     color: #0f172a;
 }
 
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-    /* Mobile navigation: keep links reachable (previously hidden) */
-    .navbar {
-        height: auto;
-        padding: 14px 0;
-    }
-
-    .nav-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .nav-links {
-        gap: 18px;
-        flex-wrap: wrap;
-    }
-
-    .nav-links a {
-        font-size: 13px;
-    }
-
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
-
-    .hero {
-        min-height: auto;
-    }
-
-    .steps {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .preview-card {
-        transform: none;
-    }
-}
-
 @media (max-width: 520px) {
-
-    .hero-content {
-        padding: 55px 0;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
 
     .button {
         text-align: center;
-    }
-
-    .steps {
-        grid-template-columns: 1fr;
     }
 
     .footer-content {
@@ -434,259 +86,6 @@ footer {
         gap: 5px;
     }
 }
-/* ========================================
-   EXAMPLE PORTFOLIO
-======================================== */
-
-.logo-link {
-    text-decoration: none;
-    color: #0f172a;
-}
-
-.active-link {
-    color: #2563eb !important;
-}
-
-.portfolio-page {
-    background: #ffffff;
-}
-
-
-/* PORTFOLIO INTRO */
-
-.portfolio-hero {
-    padding: 90px 0 80px;
-    background:
-        radial-gradient(circle at 85% 25%, #dbeafe 0%, transparent 28%),
-        linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.portfolio-intro {
-    display: grid;
-    grid-template-columns: 1.4fr 0.6fr;
-    gap: 80px;
-    align-items: center;
-}
-
-.portfolio-label {
-    color: #2563eb;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.8px;
-    margin-bottom: 14px;
-}
-
-.portfolio-text h1 {
-    font-size: clamp(44px, 5vw, 66px);
-    line-height: 1.05;
-    letter-spacing: -2.5px;
-    margin-bottom: 13px;
-}
-
-.portfolio-text h2 {
-    color: #334155;
-    font-size: 21px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.specialties {
-    color: #2563eb;
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 25px;
-}
-
-.specialties span {
-    color: #94a3b8;
-    padding: 0 5px;
-}
-
-.about-text {
-    max-width: 690px;
-    color: #64748b;
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 29px;
-}
-
-.portfolio-actions {
-    display: flex;
-    gap: 12px;
-}
-
-
-/* PROFILE */
-
-.profile-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.profile-photo {
-    width: 250px;
-    height: 250px;
-    overflow: hidden;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-    border: 8px solid #ffffff;
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.profile-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    border-radius: 50%;
-    display: block;
-}
-
-.profile-photo span {
-    font-size: 42px;
-    font-weight: 800;
-    color: #2563eb;
-}
-
-.social-links {
-    display: flex;
-    gap: 20px;
-}
-
-.social-links a {
-    text-decoration: none;
-    color: #475569;
-    font-size: 13px;
-    font-weight: 700;
-}
-
-.social-links a:hover {
-    color: #2563eb;
-}
-
-
-/* PROJECT SECTION */
-
-.portfolio-projects {
-    padding: 85px 0 100px;
-}
-
-.projects-heading {
-    margin-bottom: 35px;
-}
-
-.projects-heading h2 {
-    font-size: 36px;
-    letter-spacing: -1px;
-    margin-bottom: 5px;
-}
-
-.projects-heading > div > p:last-child {
-    color: #64748b;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.portfolio-project-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 15px;
-    overflow: hidden;
-    transition: 0.25s;
-}
-
-.portfolio-project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
-}
-
-.portfolio-project-image {
-    height: 180px;
-    display: flex;
-    align-items: flex-end;
-    padding: 18px;
-}
-
-.portfolio-project-image span {
-    padding: 6px 10px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.92);
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.cyber-image {
-    background:
-        radial-gradient(circle at 75% 20%, #60a5fa, transparent 25%),
-        linear-gradient(135deg, #172554, #2563eb);
-}
-
-.case-image {
-    background:
-        radial-gradient(circle at 20% 30%, #94a3b8, transparent 25%),
-        linear-gradient(135deg, #0f172a, #475569);
-}
-
-.unity-image {
-    background:
-        radial-gradient(circle at 70% 30%, #c4b5fd, transparent 30%),
-        linear-gradient(135deg, #312e81, #7c3aed);
-}
-
-.project-content {
-    padding: 22px;
-}
-
-.project-content h3 {
-    font-size: 19px;
-    margin-bottom: 10px;
-    line-height: 1.35;
-}
-
-.project-content > p {
-    color: #64748b;
-    font-size: 14px;
-    line-height: 1.65;
-    min-height: 92px;
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 17px 0;
-}
-
-.project-tags span {
-    padding: 5px 8px;
-    background: #f1f5f9;
-    color: #475569;
-    border-radius: 5px;
-    font-size: 10px;
-    font-weight: 700;
-}
-
-.project-link {
-    text-decoration: none;
-    color: #2563eb;
-    font-size: 13px;
-    font-weight: 800;
-}
-
-.project-link:hover {
-    text-decoration: underline;
-}
-
 
 /* CREATE CTA */
 
@@ -707,59 +106,15 @@ footer {
     margin-bottom: 3px;
 }
 
-.create-cta p {
-    color: #64748b;
-    font-size: 14px;
-}
-
-
 /* EXAMPLE PORTFOLIO MOBILE */
 
 @media (max-width: 800px) {
-
-    .portfolio-intro {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
-
-    .profile-area {
-        align-items: flex-start;
-    }
-
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
 
     .create-cta {
         flex-direction: column;
         align-items: flex-start;
     }
 }
-
-@media (max-width: 520px) {
-
-    .portfolio-hero {
-        padding: 60px 0;
-    }
-
-    .portfolio-text h1 {
-        font-size: 42px;
-    }
-
-    .portfolio-actions {
-        flex-direction: column;
-    }
-
-    .profile-photo {
-        width: 200px;
-        height: 200px;
-    }
-
-    .social-links {
-        flex-wrap: wrap;
-    }
-}
-
 
 /* Hidden when this stylesheet loads (see creator.html) */
 .load-warning {
@@ -801,7 +156,6 @@ footer {
     clip: rect(0 0 0 0);
     white-space: nowrap;
 }
-
 
 /* ========================================
    PORTFOLIO CREATOR (EDITOR)
@@ -914,7 +268,7 @@ footer {
     background: #1d4ed8;
 }
 
-/* SETTINGS ROW (option B: design, progress, storage note, draft menu) */
+/* SETTINGS ROW (design, progress, storage note, draft menu) */
 
 .settings-bar {
     position: sticky;
@@ -1238,7 +592,7 @@ footer {
     box-shadow: 0 25px 60px rgba(15, 23, 42, 0.10);
 }
 
-/* Editing tip (replaces the old fake address bar) */
+/* Editing tip bar */
 
 .editor-hint {
     display: flex;
@@ -1585,15 +939,6 @@ footer {
     font-weight: 700;
 }
 
-.ed-size-tip {
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: #fef3c7;
-    color: #92400e;
-    font-weight: 700;
-    font-size: 11px;
-}
-
 .ed-add-big {
     display: flex;
     width: 100%;
@@ -1879,16 +1224,6 @@ footer {
 
 .field-error:empty {
     display: none;
-}
-
-.field-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-.field-grid .field + .field {
-    margin-top: 0;
 }
 
 .field-divider {
@@ -2338,7 +1673,6 @@ footer {
         padding: 7px 10px;
     }
 
-    .field-grid,
     .image-field {
         grid-template-columns: 1fr;
     }
@@ -2364,7 +1698,6 @@ footer {
         scroll-behavior: auto !important;
     }
 }
-
 
 /* ========================================
    EXAMPLE PAGE: same portfolio in three designs
@@ -2501,9 +1834,8 @@ footer {
     }
 }
 
-
 /* ========================================
-   HOMEPAGE (design B: centered showcase) + shared top navigation
+   HOMEPAGE + shared top navigation
 ======================================== */
 
 .hx-wrap {
@@ -2613,17 +1945,6 @@ footer {
     background: #1d4ed8;
 }
 
-.hx-btn-outline {
-    background: #ffffff;
-    border-color: #cbd5e1;
-    color: #0f172a;
-}
-
-.hx-btn-outline:hover {
-    border-color: #2563eb;
-    color: #2563eb;
-}
-
 .hx-btn-sm {
     padding: 9px 16px;
     border-radius: 10px;
@@ -2639,29 +1960,6 @@ footer {
     padding: 72px 0 0;
     text-align: center;
     background: radial-gradient(900px 520px at 50% -10%, #dbeafe, transparent 70%);
-}
-
-.hx-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 26px;
-    padding: 6px 14px 6px 6px;
-    border: 1px solid #e2e8f0;
-    border-radius: 99px;
-    background: #ffffff;
-    color: #334155;
-    font-size: 13px;
-    font-weight: 700;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
-}
-
-.hx-pill b {
-    padding: 2px 9px;
-    border-radius: 99px;
-    background: #2563eb;
-    color: #ffffff;
-    font-size: 11px;
 }
 
 .hx-title {
@@ -2692,12 +1990,6 @@ footer {
     justify-content: center;
     gap: 12px;
     margin-bottom: 18px;
-}
-
-.hx-small {
-    margin-bottom: 44px;
-    color: #94a3b8;
-    font-size: 13px;
 }
 
 .hx-switch {
@@ -2807,20 +2099,6 @@ footer {
     box-shadow: 0 30px 60px rgba(15, 23, 42, 0.3);
 }
 
-.hx-use {
-    display: inline-block;
-    margin-top: 26px;
-    color: #2563eb;
-    font-size: 14px;
-    font-weight: 800;
-    text-decoration: none;
-}
-
-.hx-use:hover {
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
 /* SECTIONS */
 
 .hx-section {
@@ -2830,20 +2108,6 @@ footer {
 
 .hx-center {
     text-align: center;
-}
-
-.hx-tinted {
-    background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.hx-kicker {
-    margin-bottom: 10px;
-    color: #2563eb;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.6px;
 }
 
 .hx-h2 {
@@ -2987,67 +2251,6 @@ footer {
     font-size: 14px;
 }
 
-/* FEATURES (bento) */
-
-.hx-bento {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    gap: 18px;
-    margin-top: 48px;
-}
-
-.hx-box {
-    overflow: hidden;
-    padding: 28px;
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
-    background: #ffffff;
-}
-
-.hx-box h3 {
-    margin-bottom: 6px;
-    font-size: 19px;
-}
-
-.hx-box p {
-    color: #64748b;
-    font-size: 14.5px;
-}
-
-.hx-box-big {
-    grid-row: span 2;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(160deg, #eff6ff, #ffffff);
-}
-
-.hx-box-big img {
-    width: 100%;
-    height: auto;
-    margin-top: auto;
-    padding-top: 24px;
-    border-radius: 12px;
-}
-
-.hx-box-dark {
-    background: #0f172a;
-    border-color: #0f172a;
-}
-
-.hx-box-dark h3 {
-    color: #ffffff;
-}
-
-.hx-box-dark p {
-    color: #94a3b8;
-}
-
-.hx-ic {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 26px;
-}
-
 /* FAQ */
 
 .hx-faq {
@@ -3114,15 +2317,6 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .hx-bento {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .hx-box-big {
-        grid-column: 1 / -1;
-        grid-row: auto;
-    }
-
     .hx-phone {
         right: 0;
         width: 150px;
@@ -3182,8 +2376,7 @@ footer {
         font-size: 12px;
     }
 
-    .hx-steps,
-    .hx-bento {
+    .hx-steps {
         grid-template-columns: 1fr;
     }
 
@@ -3200,7 +2393,6 @@ footer {
 .hx-faq-section {
     padding-top: 24px;
 }
-
 
 /* Very small phones (320–400 px) */
 @media (max-width: 400px) {
@@ -3240,8 +2432,7 @@ footer {
     }
 }
 
-
-/* Homepage order (v6): hero → how to create → three designs → FAQ */
+/* Homepage section spacing: hero → how to create → three designs → FAQ */
 .hx-hero {
     padding-bottom: 8px;
 }
@@ -3281,8 +2472,7 @@ footer {
     margin-bottom: 28px;
 }
 
-
-/* v7: homepage title above designs, step-by-step guide button */
+/* Homepage: title above designs, step-by-step guide button */
 .hx-templates-title {
     margin-bottom: 36px;
 }
@@ -3291,7 +2481,6 @@ footer {
     margin-top: 18px;
     text-align: center;
 }
-
 
 /* ========================================
    STEP-BY-STEP GUIDE PAGE (guide.html)

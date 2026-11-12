@@ -2580,11 +2580,4 @@
         setStatus("saved", "Changes save automatically in this browser");
     }
 
-    // Small hook for automated testing (no effect for students)
-    window.__portfolioCreator = {
-        getState: function () { return JSON.parse(JSON.stringify(state)); },
-        buildExportHTML: function () { return buildExportHTML(state); },
-        parseUserUrl: parseUserUrl
-    };
-
 })();

@@ -1,0 +1,98 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:04.567
+Build and publish your student portfolio
+
+2
+00:00:05.067 --> 00:00:07.800
+Part A: Build your portfolio
+
+3
+00:00:08.014 --> 00:00:12.431
+Step 1: Open Portfolio Creator and select Create My Portfolio.
+
+4
+00:00:12.431 --> 00:00:15.333
+Step 1: The editor opens. Your work saves automatically in this browser.
+
+5
+00:00:15.340 --> 00:00:25.767
+Step 2: Choose a design. You can switch at any time.
+
+6
+00:00:25.772 --> 00:00:41.733
+Step 3: Click ✎ Edit to add your name, title and About Me.
+
+7
+00:00:41.746 --> 00:00:55.567
+Step 3: Use + Add to add projects, experience, skills and your own sections.
+
+8
+00:00:55.571 --> 00:01:06.633
+Step 4: Select Preview to see your site on a laptop and on a phone.
+
+9
+00:01:06.648 --> 00:01:10.899
+Step 5: Select Export Portfolio. Save the file as index.html.
+
+10
+00:01:10.899 --> 00:01:14.400
+Step 6: Double-click index.html to check it. This is the file you will publish.
+
+11
+00:01:14.700 --> 00:01:18.967
+File name check: your file must be named exactly index.html
+
+12
+00:01:19.467 --> 00:01:22.233
+Part B: Introduction to GitHub
+
+13
+00:01:22.450 --> 00:01:28.633
+Step 7: Go to github.com. Sign in, or select Create an account.
+
+14
+00:01:28.642 --> 00:01:33.840
+Steps 10–11: Select + → New repository. Name it my-portfolio.
+
+15
+00:01:33.840 --> 00:01:38.019
+Step 11: Choose Public and leave Add README off.
+
+16
+00:01:38.019 --> 00:01:42.000
+Step 11: Select Create repository.
+
+17
+00:01:42.018 --> 00:01:47.767
+Step 12: In your new repository, select “uploading an existing file”.
+
+18
+00:01:47.774 --> 00:01:51.623
+Step 12: Drag in your index.html. Check the name: exactly index.html.
+
+19
+00:01:51.623 --> 00:01:58.500
+Step 12: Type a short message such as “Add portfolio”, then select Commit changes.
+
+20
+00:01:58.513 --> 00:02:05.033
+Step 13: Open Settings, then select Pages.
+
+21
+00:02:05.048 --> 00:02:14.267
+Step 13: Choose Deploy from a branch, main and / (root), then Save.
+
+22
+00:02:14.275 --> 00:02:20.533
+Step 14: After 1–10 minutes your site is live. Select Visit site.
+
+23
+00:02:20.542 --> 00:02:28.367
+Step 15: Your portfolio is online. Share the link with your instructor.
+
+24
+00:02:28.667 --> 00:02:33.400
+Your portfolio is online. Need help? Open the Guide tab in Portfolio Creator.
+

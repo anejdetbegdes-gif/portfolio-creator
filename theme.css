@@ -1,0 +1,645 @@
+/* =========================================================
+   Portfolio Creator — site theme: Midnight Abyss · Aqua Jade · Harbor Blue
+   Loaded AFTER style.css on guide.html and creator.html.
+   Only restyles the site's own pages. The three portfolio designs
+   (Professional / Editorial / Dark), the editor canvas portfolio,
+   the preview iframe and example.html are not affected.
+   ========================================================= */
+/* Fonts are self-hosted (fonts/ folder, SIL Open Font License) so the editor's Content-Security-Policy stays unchanged. */
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/plus-jakarta-sans-400.woff2") format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/plus-jakarta-sans-500.woff2") format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/plus-jakarta-sans-600.woff2") format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/plus-jakarta-sans-700.woff2") format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-style:normal;font-weight:800;font-display:swap;src:url("fonts/plus-jakarta-sans-800.woff2") format("woff2")}
+
+:root {
+    --pc-charcoal: #141A33;
+    --pc-deep: #0D1226;
+    --pc-raise: #1B2342;
+    --pc-raise-2: #232D52;
+    --pc-ink: #F4F5F8;
+    --pc-muted: #AEB8D3;
+    --pc-line: rgba(201, 246, 243, 0.12);
+    --pc-line-2: rgba(201, 246, 243, 0.22);
+    --pc-blue: #4878A6;
+    --pc-blue-ink: #2C5A86;
+    --pc-blue-soft: #E6F4F7;
+    --pc-orange: #7FE3D6;
+    --pc-orange-hi: #9BEDE2;
+    --pc-on-orange: #0B1A2E;
+    --pc-display: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    --pc-text: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+/* ---------- Shared (guide + creator chrome) ---------- */
+.guide-body,
+.creator-body {
+    font-family: var(--pc-text);
+}
+
+.guide-body :focus-visible,
+.example-body > :not(main) :focus-visible,
+.creator-toolbar :focus-visible,
+.settings-bar :focus-visible,
+.preview-bar :focus-visible {
+    outline-color: var(--pc-orange);
+}
+
+.guide-body .skip-link,
+.example-body .skip-link,
+.creator-body .skip-link {
+    background: var(--pc-orange);
+    color: var(--pc-on-orange);
+}
+
+/* =========================================================
+   GUIDE PAGE (guide.html)
+   ========================================================= */
+.guide-body {
+    background: var(--pc-charcoal);
+    color: var(--pc-ink);
+}
+
+/* Navigation */
+:is(.guide-body, .example-body) .hx-nav {
+    background: rgba(13, 18, 38, 0.92);
+    border-bottom: 1px solid var(--pc-line);
+}
+:is(.guide-body, .example-body) .hx-logo { color: var(--pc-ink); }
+:is(.guide-body, .example-body) .hx-logo-accent { color: var(--pc-orange); }
+:is(.guide-body, .example-body) .hx-links {
+    gap: 22px;
+    padding: 0;
+    background: transparent;
+}
+:is(.guide-body, .example-body) .hx-links a {
+    padding: 6px 0;
+    border-radius: 0;
+    color: var(--pc-muted);
+}
+:is(.guide-body, .example-body) .hx-links a:hover { color: var(--pc-ink); }
+
+/* Buttons */
+:is(.guide-body, .example-body) .hx-btn {
+    border-radius: 999px;
+    font-family: var(--pc-text);
+    font-weight: 800;
+}
+:is(.guide-body, .example-body) .hx-btn-blue {
+    background: var(--pc-orange);
+    color: var(--pc-on-orange);
+    box-shadow: none;
+}
+:is(.guide-body, .example-body) .hx-btn-blue:hover {
+    background: var(--pc-orange-hi);
+    transform: translateY(-1px);
+}
+
+/* Hero */
+.guide-body .gd-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 0 64px;
+    background: linear-gradient(180deg, #0D1226 0%, #171F44 45%, #1D3656 80%, #2F6680 100%);
+    border-bottom: 1px solid var(--pc-line);
+}
+.guide-body .gd-hero::before {
+    content: "";
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 62%;
+    height: 420px;
+    border: 1.5px solid #C9F6F3;
+    border-radius: 50%;
+    opacity: 0.35;
+    pointer-events: none;
+}
+.guide-body .gd-hero .hx-wrap { position: relative; }
+.guide-body .hx-h2,
+.guide-body .gd-title {
+    font-family: var(--pc-display);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+}
+.guide-body .gd-title {
+    margin-bottom: 16px;
+    font-size: clamp(38px, 6vw, 64px);
+}
+.guide-body .hx-sub { color: var(--pc-muted); }
+.guide-body .gd-download {
+    border: 1px solid var(--pc-line);
+    border-top: 3px solid var(--pc-blue);
+    border-radius: 8px;
+    background: var(--pc-raise);
+}
+.guide-body .gd-download strong { color: var(--pc-ink); }
+.guide-body .gd-download p { color: var(--pc-muted); }
+.guide-body .gd-download p a { color: #9BEDE2; }
+.guide-body .gd-doc-icon {
+    border-radius: 4px;
+    background: transparent;
+    border: 2px solid var(--pc-orange);
+    color: var(--pc-orange);
+}
+
+/* Table of contents */
+.guide-body .gd-toc p { color: var(--pc-muted); }
+.guide-body .gd-toc a {
+    border-left: 2px solid var(--pc-line-2);
+    color: var(--pc-muted);
+}
+.guide-body .gd-toc a:hover {
+    border-color: var(--pc-orange);
+    color: var(--pc-ink);
+}
+
+/* Content */
+.guide-body .gd-part {
+    border-bottom: 1px solid var(--pc-line);
+    scroll-margin-top: 84px;
+}
+.guide-body .gd-part h2 {
+    font-family: var(--pc-display);
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 36px);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+.guide-body .gd-num {
+    border-radius: 999px;
+    background: var(--pc-raise);
+    border: 2px solid var(--pc-blue);
+    color: var(--pc-ink);
+}
+.guide-body .gd-step h3 { color: var(--pc-ink); }
+.guide-body .gd-step p,
+.guide-body .gd-step li,
+.guide-body .gd-part > p,
+.guide-body .gd-checklist li { color: var(--pc-muted); }
+.guide-body .gd-content strong { color: var(--pc-ink); }
+.guide-body .gd-content code {
+    background: var(--pc-raise-2);
+    color: #C9F6F3;
+}
+.guide-body .gd-checklist li::marker { color: var(--pc-orange); font-weight: 800; }
+
+/* Notes keep their meaning: info = blue, warn = orange, danger = red */
+.guide-body .gd-note.info {
+    background: rgba(72, 120, 166, 0.12);
+    border: 1px solid rgba(72, 120, 166, 0.55);
+    color: #DCEAF5;
+}
+.guide-body .gd-note.warn {
+    background: rgba(245, 180, 70, 0.10);
+    border: 1px solid rgba(245, 180, 70, 0.50);
+    color: #FFE8C2;
+}
+.guide-body .gd-note.danger {
+    background: rgba(239, 68, 68, 0.10);
+    border: 2px solid #EF4444;
+    color: #FFDADA;
+}
+.guide-body .gd-note.info strong,
+.guide-body .gd-note.warn strong,
+.guide-body .gd-note.danger strong { color: #ffffff; }
+.guide-body .gd-note-title { color: #FF8A8A; }
+.guide-body .gd-note.danger code { background: rgba(255, 255, 255, 0.12); color: #ffffff; }
+
+/* Footer (site footer only, not portfolio footers) */
+.guide-body > footer {
+    background: var(--pc-deep);
+    border-top: 1px solid var(--pc-line);
+}
+.guide-body > footer .footer-content { color: var(--pc-muted); }
+.guide-body > footer .footer-content strong { color: var(--pc-ink); }
+
+@media (max-width: 900px) {
+    .guide-body .gd-toc {
+        border: 1px solid var(--pc-line);
+        background: var(--pc-raise);
+    }
+}
+
+/* Guide: Part A / Part B cards, GitHub section helpers */
+.guide-body .gd-tracks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 32px auto 0;
+    text-align: left;
+}
+.guide-body .gd-track {
+    display: grid;
+    gap: 6px;
+    padding: 18px 20px;
+    border: 1px solid var(--pc-line-2);
+    border-radius: 10px;
+    background: rgba(13, 18, 38, 0.55);
+    color: var(--pc-muted);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: border-color .2s, transform .2s;
+}
+.guide-body .gd-track:hover { border-color: var(--pc-orange); transform: translateY(-2px); }
+.guide-body .gd-track strong { color: var(--pc-ink); font-family: var(--pc-display); font-size: 20px; letter-spacing: -0.01em; }
+.guide-body .gd-track-tag {
+    justify-self: start;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: rgba(127, 227, 214, 0.14);
+    color: var(--pc-orange);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.guide-body .gd-download { margin-top: 14px; }
+.guide-body .gd-nowrap { white-space: nowrap; }
+.guide-body .gd-video {
+    margin: 14px auto 0;
+    border: 1px solid var(--pc-line-2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--pc-deep);
+    text-align: left;
+}
+.guide-body .gd-video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #0D1226; }
+.guide-body .gd-video p { margin: 0; padding: 12px 18px; color: var(--pc-muted); font-size: 14px; line-height: 1.5; }
+.guide-body .gd-video p strong { color: var(--pc-ink); }
+.guide-body .hx-links a.is-active {
+    background: transparent;
+    box-shadow: inset 0 -2px 0 var(--pc-orange);
+    color: var(--pc-ink);
+    font-weight: 700;
+}
+
+.guide-body .gd-toc p + a { margin-top: 0; }
+.guide-body .gd-toc a + p { margin-top: 18px; }
+
+.guide-body .gd-part-label {
+    margin: 0 0 10px;
+    color: var(--pc-orange);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    scroll-margin-top: 84px;
+}
+.guide-body .gd-part-label:not(:first-child) { margin-top: 12px; }
+
+.guide-body .gd-terms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin: 20px 0 0;
+}
+.guide-body .gd-terms > div {
+    padding: 14px 16px;
+    border: 1px solid var(--pc-line);
+    border-radius: 10px;
+    background: var(--pc-raise);
+}
+.guide-body .gd-terms dt { color: var(--pc-ink); font-weight: 800; margin-bottom: 4px; }
+.guide-body .gd-terms dd { margin: 0; color: var(--pc-muted); font-size: 14px; line-height: 1.55; }
+
+.guide-body .gd-path { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; color: var(--pc-muted); }
+.guide-body .gd-or { font-size: 13px; }
+.guide-body .gd-ui {
+    display: inline-block;
+    padding: 2px 10px;
+    border: 1px solid rgba(240, 246, 252, 0.18);
+    border-radius: 6px;
+    background: #21262d;
+    color: #f0f6fc;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.6;
+    white-space: nowrap;
+}
+.guide-body .gd-ui-go { background: #238636; border-color: rgba(240, 246, 252, 0.10); color: #ffffff; }
+.guide-body .gd-url {
+    margin-top: 8px;
+    padding: 10px 14px;
+    border: 1px dashed var(--pc-line-2);
+    border-radius: 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 14px;
+    color: var(--pc-ink);
+    overflow-wrap: anywhere;
+}
+.guide-body .gd-url span { color: var(--pc-orange); }
+.guide-body .gd-h3 { margin: 22px 0 6px; color: var(--pc-ink); font-size: 18px; }
+.guide-body .gd-part p + p { margin-top: 8px; }
+.guide-body .gd-checks { display: grid; gap: 10px; margin: 14px 0; padding-left: 0; list-style: none; }
+.guide-body .gd-checks li { position: relative; padding-left: 28px; color: var(--pc-muted); font-size: 15px; line-height: 1.65; }
+.guide-body .gd-checks li::before { content: "✓"; position: absolute; left: 4px; color: var(--pc-orange); font-weight: 800; }
+
+@media (max-width: 640px) {
+    .guide-body .gd-tracks { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   EXAMPLE PAGE (example.html) — site menu, design switcher,
+   closing call-to-action and footer only. The example portfolio
+   itself (Professional / Editorial / Modern Dark) is untouched.
+   ========================================================= */
+.example-body {
+    background: var(--pc-charcoal);
+    font-family: var(--pc-text);
+}
+.example-body .hx-links a.is-active {
+    background: transparent;
+    box-shadow: inset 0 -2px 0 var(--pc-orange);
+    color: var(--pc-ink);
+}
+.example-body .example-switcher {
+    background: rgba(20, 26, 51, 0.97);
+    border-bottom: 1px solid var(--pc-line);
+    box-shadow: none;
+}
+.example-body .example-switcher .section-label { color: var(--pc-orange); }
+.example-body .example-lead { color: var(--pc-muted); font-size: 13px; }
+@media (min-width: 1240px) {
+    .example-body .example-switcher-content { gap: 18px; }
+    .example-body .example-lead { white-space: nowrap; }
+}
+.example-body .example-tabs { background: var(--pc-deep); }
+.example-body .example-tabs [role="tab"] { color: var(--pc-muted); }
+.example-body .example-tabs [role="tab"]:hover { color: var(--pc-ink); }
+.example-body .example-tabs [role="tab"][aria-selected="true"] {
+    background: var(--pc-raise-2);
+    color: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--pc-blue);
+}
+.example-body .example-tabs .theme-swatch { border-color: rgba(255, 255, 255, 0.35); }
+.example-body .example-switcher .button.primary,
+.example-body .example-cta-section .button.primary {
+    border-radius: 999px;
+    background: var(--pc-orange);
+    color: var(--pc-on-orange);
+    font-family: var(--pc-text);
+    font-weight: 800;
+    box-shadow: none;
+}
+.example-body .example-switcher .button.primary:hover,
+.example-body .example-cta-section .button.primary:hover {
+    background: var(--pc-orange-hi);
+    transform: translateY(-1px);
+}
+.example-body .example-cta-section {
+    padding-top: 56px;
+    background: var(--pc-charcoal);
+}
+.example-body .create-cta {
+    border: 1px solid var(--pc-line);
+    border-top: 3px solid var(--pc-blue);
+    border-radius: 8px;
+    background: var(--pc-raise);
+}
+.example-body .create-cta h3 {
+    font-family: var(--pc-display);
+    font-weight: 800;
+    font-size: clamp(26px, 3.4vw, 36px);
+    letter-spacing: -0.03em;
+    color: var(--pc-ink);
+}
+.example-body > footer {
+    background: var(--pc-deep);
+    border-top: 1px solid var(--pc-line);
+}
+.example-body > footer .footer-content { color: var(--pc-muted); }
+.example-body > footer .footer-content strong { color: var(--pc-ink); }
+
+/* =========================================================
+   EDITOR (creator.html) — toolbar, settings row, popovers,
+   dialogs, preview bar, toasts. The portfolio inside
+   #editor-canvas keeps its own Professional/Editorial/Dark design.
+   ========================================================= */
+.creator-body {
+    background: var(--pc-charcoal);
+}
+
+/* Row 1: toolbar */
+.creator-body .creator-toolbar {
+    background: rgba(13, 18, 38, 0.96);
+    border-bottom: 1px solid var(--pc-line);
+    box-shadow: none;
+}
+.creator-body .creator-back { color: var(--pc-muted); }
+.creator-body .creator-back:hover { color: var(--pc-ink); }
+.creator-body .editing-status { color: var(--pc-ink); }
+.creator-body .editing-status[data-state="error"] { color: #FF8A8A; }
+
+.creator-body .toolbar-button {
+    border-radius: 999px;
+    font-family: var(--pc-text);
+    font-weight: 800;
+}
+.creator-body .save-button,
+.creator-body .preview-button {
+    background: transparent;
+    border-color: var(--pc-blue);
+    color: var(--pc-ink);
+}
+.creator-body .save-button:hover,
+.creator-body .preview-button:hover {
+    background: var(--pc-blue);
+    border-color: var(--pc-blue);
+    color: #ffffff;
+}
+.creator-body .creator-actions .save-button {
+    border-color: transparent;
+    background: transparent;
+    color: var(--pc-muted);
+}
+.creator-body .creator-actions .save-button:hover {
+    background: var(--pc-raise);
+    color: var(--pc-ink);
+}
+.creator-body .export-button {
+    background: var(--pc-orange);
+    color: var(--pc-on-orange);
+}
+.creator-body .export-button:hover { background: var(--pc-orange-hi); }
+
+/* Row 2: settings */
+.creator-body .settings-bar {
+    background: rgba(20, 26, 51, 0.97);
+    border-bottom: 1px solid var(--pc-line);
+}
+.creator-body .settings-label { color: var(--pc-muted); }
+.creator-body .theme-picker { background: var(--pc-deep); }
+.creator-body .theme-option { color: var(--pc-muted); }
+.creator-body .theme-option:hover { color: var(--pc-ink); }
+.creator-body .theme-option[aria-checked="true"] {
+    background: var(--pc-raise-2);
+    color: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--pc-blue);
+}
+.creator-body .theme-swatch { border-color: rgba(255, 255, 255, 0.35); }
+
+.creator-body .pop-caret { color: var(--pc-muted); }
+.creator-body .pop-panel {
+    border: 1px solid var(--pc-line-2);
+    background: var(--pc-raise);
+    color: var(--pc-ink);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+.creator-body .pop-title { color: var(--pc-ink); }
+.creator-body .pop-text { color: var(--pc-muted); }
+.creator-body .pop-text strong { color: var(--pc-ink); }
+.creator-body .pop-hint {
+    border-top-color: var(--pc-line);
+    color: var(--pc-muted);
+}
+
+.creator-body .progress-summary { color: var(--pc-ink); }
+.creator-body .progress-summary:hover { background: var(--pc-raise); }
+.creator-body .progress-track { background: var(--pc-raise-2); }
+.creator-body .progress-fill { background: linear-gradient(90deg, var(--pc-blue), var(--pc-orange)); }
+.creator-body .progress-list { color: var(--pc-muted); }
+.creator-body .progress-list li::before { color: var(--pc-muted); }
+.creator-body .progress-list li.done { color: var(--pc-ink); }
+.creator-body .progress-list li.done::before { color: #4ADE80; }
+
+.creator-body .storage-note { color: #F5C46B; }
+.creator-body .storage-note:hover { background: rgba(245, 180, 70, 0.12); }
+.creator-body .draft-button {
+    background: transparent;
+    border-color: var(--pc-line-2);
+    color: var(--pc-ink);
+}
+.creator-body .draft-button:hover {
+    border-color: var(--pc-blue);
+    color: var(--pc-ink);
+}
+.creator-body .menu-item { color: var(--pc-ink); }
+.creator-body .menu-item:hover,
+.creator-body .menu-item:focus-visible { background: var(--pc-raise-2); }
+.creator-body .menu-item.danger { color: #FF8A8A; }
+.creator-body .menu-item.danger:hover { background: rgba(239, 68, 68, 0.14); }
+.creator-body .draft-menu hr { border-top-color: var(--pc-line); }
+
+/* Editor frame (the portfolio inside keeps its own design) */
+.creator-body .editor-frame {
+    border: 1px solid var(--pc-line-2);
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px rgba(72, 120, 166, 0.25), 0 30px 60px -30px rgba(72, 120, 166, 0.55);
+}
+
+/* Editing tip bar */
+.creator-body .editor-hint {
+    background: var(--pc-deep);
+    border-bottom: 1px solid var(--pc-line);
+    color: var(--pc-muted);
+    font-family: var(--pc-text);
+}
+.creator-body .editor-hint strong { color: var(--pc-ink); }
+.creator-body .hint-icon { background: var(--pc-orange); color: var(--pc-on-orange); border-radius: 5px; }
+.creator-body .hint-chip {
+    border-color: var(--pc-blue);
+    background: transparent;
+    color: #ffffff;
+}
+.creator-body .hint-chip.dashed {
+    border-color: var(--pc-muted);
+    color: var(--pc-ink);
+}
+.creator-body .hint-close { color: var(--pc-muted); }
+.creator-body .hint-close:hover { background: var(--pc-raise); color: var(--pc-ink); }
+
+/* Inline editing controls: accent colours only, so they stay readable on every portfolio design */
+.creator-body .ed-btn { border-color: #B7DCE8; background: var(--pc-blue-soft); color: var(--pc-blue-ink); }
+.creator-body .ed-btn:hover { background: #D3EBF2; border-color: #9BEDE2; }
+.creator-body .ed-add:hover { border-color: var(--pc-blue); color: var(--pc-blue-ink); }
+.creator-body .ed-drop-target { outline-color: var(--pc-orange); }
+.creator-body .ed-segment { border-color: #B7DCE8; }
+.creator-body .ed-segment button[aria-pressed="true"] { background: var(--pc-blue); }
+.creator-body .ed-photo-tools input[type="range"] { accent-color: var(--pc-blue); }
+.creator-body .ed-add-big .ed-plus { background: var(--pc-orange); color: var(--pc-on-orange); border-radius: 999px; }
+.creator-body .ed-idea:hover { border-color: var(--pc-blue); color: var(--pc-blue-ink); }
+
+/* Dialogs */
+.creator-body .modal {
+    border: 1px solid var(--pc-line-2);
+    border-radius: 10px;
+    font-family: var(--pc-text);
+}
+.creator-body .modal::backdrop { background: rgba(13, 18, 38, 0.72); }
+.creator-body .modal-header {
+    background: var(--pc-charcoal);
+    border-bottom: 3px solid var(--pc-blue);
+    color: var(--pc-ink);
+}
+.creator-body .modal-header h2,
+.creator-body .modal-header h3 { color: var(--pc-ink); }
+.creator-body .modal-label { color: var(--pc-orange); }
+.creator-body .modal-close { background: var(--pc-raise); color: var(--pc-muted); }
+.creator-body .modal-close:hover { background: var(--pc-raise-2); color: var(--pc-ink); }
+.creator-body .modal-actions { background: #F4F5F8; border-top-color: #E4E6EC; }
+.creator-body .btn-cancel,
+.creator-body .btn-save { border-radius: 999px; font-family: var(--pc-text); font-weight: 800; }
+.creator-body .btn-save {
+    background: var(--pc-orange);
+    border-color: var(--pc-orange);
+    color: var(--pc-on-orange);
+    box-shadow: none;
+}
+.creator-body .btn-save:hover { background: var(--pc-orange-hi); }
+.creator-body .field input:focus,
+.creator-body .field textarea:focus {
+    border-color: var(--pc-blue);
+    box-shadow: 0 0 0 3px rgba(72, 120, 166, 0.18);
+}
+.creator-body .guide-steps li::before { background: var(--pc-charcoal); color: #ffffff; border-radius: 999px; }
+.creator-body .guide-callout.info { background: var(--pc-blue-soft); border-color: #B7DCE8; color: #173A5C; }
+.creator-body .guide-callout.warn { background: #FFF6E3; border-color: #F1CF8C; color: #6B4300; }
+
+/* Preview layer */
+.creator-body .preview-layer { background: var(--pc-charcoal); }
+.creator-body .preview-bar {
+    background: var(--pc-deep);
+    border-bottom: 1px solid var(--pc-line);
+    color: var(--pc-ink);
+}
+.creator-body .preview-bar .toolbar-button.preview-back {
+    background: transparent;
+    border-color: var(--pc-blue);
+    color: var(--pc-ink);
+}
+.creator-body .preview-bar .toolbar-button.preview-back:hover { background: var(--pc-blue); }
+.creator-body .preview-title { color: var(--pc-muted); }
+.creator-body .device-toggle { background: var(--pc-raise); }
+.creator-body .device-toggle button { color: var(--pc-muted); }
+.creator-body .device-toggle button[aria-pressed="true"] { background: var(--pc-blue); color: #ffffff; }
+
+/* Toasts */
+.creator-body .toast { background: var(--pc-raise-2); border-left: 3px solid var(--pc-blue); font-family: var(--pc-text); }
+.creator-body .toast.error { background: #7F1D1D; border-left-color: #EF4444; }
+.creator-body .toast.success { background: #14532D; border-left-color: #4ADE80; }
+
+/* Editor settings row: the wider site font needs a little more room on
+   small laptops / tablets in landscape (801–900 px) */
+@media (min-width: 801px) and (max-width: 900px) {
+    .creator-body .progress-track { display: none; }
+}
+
+/* Example page: stack the design switcher a little earlier, because the
+   site font is wider (641–700 px) */
+@media (min-width: 641px) and (max-width: 700px) {
+    .example-body .example-switcher-content { grid-template-columns: 1fr; gap: 12px; }
+    .example-body .example-tabs { width: 100%; }
+    .example-body .example-tabs [role="tab"] { flex: 1; justify-content: center; }
+}
+
+/* Site menu with five links: keep each link on one line on tablets */
+.guide-body .hx-links a,
+.example-body .hx-links a { white-space: nowrap; }
+@media (max-width: 900px) {
+    :is(.guide-body, .example-body) .hx-nav-inner { gap: 14px; }
+    :is(.guide-body, .example-body) .hx-links { gap: 14px; }
+    :is(.guide-body, .example-body) .hx-links a { font-size: 14px; }
+}

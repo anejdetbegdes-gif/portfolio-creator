@@ -6,7 +6,8 @@
     <title>Step-by-Step Guide | Portfolio Creator</title>
     <meta name="description" content="Create a professional student portfolio website without coding, then publish it free with GitHub Pages.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232563eb'/%3E%3Cpath d='M10.5 24V8.5h6.6a5 5 0 0 1 0 10H14' stroke='%23fff' stroke-width='3.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M19 19.2l7 2.6-3 1.2-1.2 3z' fill='%23bfdbfe' stroke='%23bfdbfe' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=10">
+    <link rel="stylesheet" href="theme.css?v=6">
 </head>
 
 <body class="guide-body">
@@ -21,6 +22,7 @@
                 <a href="index.html">Home</a>
                 <a href="example.html">Example</a>
                 <a href="index.html#how-it-works">How it works</a>
+                <a href="guide.html" class="is-active" aria-current="page">Guide</a>
                 <a href="index.html#faq">FAQ</a>
             </nav>
 
@@ -34,13 +36,34 @@
         <section class="gd-hero">
             <div class="hx-wrap gd-narrow">
                 <h1 class="hx-h2 gd-title">Step-by-Step Guide</h1>
-                <p class="hx-sub">Follow these steps to create your portfolio and publish it as your own website with GitHub Pages.</p>
+                <p class="hx-sub">Build your portfolio, then learn the GitHub basics to publish it as your own website.</p>
+
+                <div class="gd-tracks">
+                    <a class="gd-track" href="#build">
+                        <span class="gd-track-tag">Part A</span>
+                        <strong>Build your portfolio</strong>
+                        <span>Create, preview and export your website file. <span class="gd-nowrap">Steps 1&ndash;6.</span></span>
+                    </a>
+                    <a class="gd-track" href="#github-intro">
+                        <span class="gd-track-tag">Part B</span>
+                        <strong>Introduction to GitHub</strong>
+                        <span>Create an account, a repository and a live link. <span class="gd-nowrap">Steps 7&ndash;15.</span></span>
+                    </a>
+                </div>
+
+                <div class="gd-video">
+                    <video controls preload="metadata" playsinline poster="videos/portfolio-creator-guide.jpg" aria-label="Video guide: build and publish your student portfolio">
+                        <source src="videos/portfolio-creator-guide.mp4" type="video/mp4">
+                        <track kind="captions" src="videos/portfolio-creator-guide.vtt" srclang="en" label="English">
+                        Your browser cannot play this video. <a href="videos/portfolio-creator-guide.mp4">Download the video (MP4)</a>.
+                    </video>
+                </div>
 
                 <div class="gd-download">
                     <span class="gd-doc-icon" aria-hidden="true">PDF</span>
                     <div>
                         <strong>Detailed guide with screenshots</strong>
-                        <p>A picture for every step. Useful if this is your first time using GitHub.
+                        <p>The same steps as a printable document, with screenshots of the editor and GitHub.
                             Also available as a <a href="Portfolio_Creator_Student_Instructions.docx" download>Word document (.docx)</a>.</p>
                     </div>
                     <a class="hx-btn hx-btn-blue hx-btn-sm" href="Portfolio_Creator_Student_Instructions.pdf" target="_blank" rel="noopener">Open PDF guide</a>
@@ -51,20 +74,27 @@
         <div class="hx-wrap gd-layout">
 
             <nav class="gd-toc" aria-label="Guide sections">
-                <p>On this page</p>
-                <a href="#part-1">1. Create your portfolio</a>
-                <a href="#part-2">2. Export your portfolio</a>
-                <a href="#part-3">3. Create a GitHub repository</a>
-                <a href="#part-4">4. Upload and publish</a>
-                <a href="#part-5">5. Share your link</a>
+                <p>Part A &middot; Build</p>
+                <a href="#part-1">Create your portfolio</a>
+                <a href="#part-2">Export your portfolio</a>
+                <p>Part B &middot; Introduction to GitHub</p>
+                <a href="#what-is-github">What is GitHub?</a>
+                <a href="#account">Create your account</a>
+                <a href="#repository">Create a repository</a>
+                <a href="#upload">Upload your file</a>
+                <a href="#pages">Publish with GitHub Pages</a>
+                <a href="#share">Share and update</a>
+                <a href="#other-projects">Your other projects</a>
+                <p>Help</p>
                 <a href="#help">Seeing a 404 error?</a>
-                <a href="#update">Updating later</a>
             </nav>
 
             <div class="gd-content">
 
+                <p class="gd-part-label" id="build">Part A &middot; Build your portfolio</p>
+
                 <section class="gd-part" id="part-1">
-                    <h2>1. Create your portfolio</h2>
+                    <h2>Create your portfolio</h2>
                     <ol class="gd-steps">
                     <li class="gd-step"><span class="gd-num">1</span><div><h3>Open the editor</h3><p>On the home page, select <strong>Create My Portfolio</strong>.</p></div></li>
                     <li class="gd-step"><span class="gd-num">2</span><div><h3>Choose a design</h3><p>At the top, pick <strong>Professional</strong>, <strong>Editorial</strong> or <strong>Dark</strong>. You can switch at any time; your content stays the same.</p></div></li>
@@ -75,7 +105,7 @@
                 </section>
 
                 <section class="gd-part" id="part-2">
-                    <h2>2. Export your portfolio</h2>
+                    <h2>Export your portfolio</h2>
                     <ol class="gd-steps" start="5">
                     <li class="gd-step"><span class="gd-num">5</span><div><h3>Export Portfolio</h3><p>Select <strong>Export Portfolio</strong>. In Chrome or Edge a Save window opens with the name <code>index.html</code>: choose a folder you can find (for example Desktop) and select <strong>Save</strong>. If your computer asks to replace an existing file, choose <strong>Yes / Replace</strong>. In other browsers the file goes to your Downloads folder.</p></div></li>
                     </ol>
@@ -90,29 +120,75 @@
                     </ol>
                 </section>
 
-                <section class="gd-part" id="part-3">
-                    <h2>3. Create a GitHub repository</h2>
+                <p class="gd-part-label" id="github-intro">Part B &middot; Introduction to GitHub</p>
+
+                <section class="gd-part" id="what-is-github">
+                    <h2>What is GitHub?</h2>
+                    <p>GitHub is a free website where people store, share and show their projects. Developers, analysts and researchers use it as a public record of their work, and many employers look at it. You only need a web browser. Five words are enough to get started:</p>
+                    <dl class="gd-terms">
+                        <div><dt>Account</dt><dd>Your profile. Your username becomes part of your website address.</dd></div>
+                        <div><dt>Repository</dt><dd>A "repo": one folder for one project. It keeps the files and the history of every change.</dd></div>
+                        <div><dt>Commit</dt><dd>Saving a change. Each commit has a short message, such as "Add portfolio".</dd></div>
+                        <div><dt>README</dt><dd>The front page of a repository. It explains what the project is.</dd></div>
+                        <div><dt>GitHub Pages</dt><dd>A free feature that turns a repository into a live website.</dd></div>
+                    </dl>
+                </section>
+
+                <section class="gd-part" id="account">
+                    <h2>Create your account</h2>
                     <ol class="gd-steps" start="7">
-                    <li class="gd-step"><span class="gd-num">7</span><div><h3>Sign in to GitHub</h3><p>Go to <strong>github.com</strong> and sign in, or create a free account.</p></div></li>
-                    <li class="gd-step"><span class="gd-num">8</span><div><h3>Create a new repository</h3><p>Click <strong>+</strong> (top right) &rarr; <strong>New repository</strong>. Name it, for example, <code>my-portfolio</code>. Choose <strong>Public</strong>, leave <strong>Add README</strong> off, and select <strong>Create repository</strong>.</p></div></li>
+                    <li class="gd-step"><span class="gd-num">7</span><div><h3>Sign up</h3><p>Go to <strong>github.com</strong> and select <span class="gd-ui">Sign up</span>. If you already have an account, sign in and go to step 10.</p><p>Use a <strong>personal email</strong> that you will keep after graduation. You can add your school email later in <strong>Settings &rarr; Emails</strong>.</p></div></li>
+                    <li class="gd-step"><span class="gd-num">8</span><div><h3>Choose a professional username</h3><p>Your username becomes your web address: <code>jordan-rivera</code> &rarr; <code>jordan-rivera.github.io</code>. Use your name, lowercase, with a hyphen if needed. Avoid nicknames and random numbers.</p></div></li>
+                    <li class="gd-step"><span class="gd-num">9</span><div><h3>Verify and secure your account</h3><p>Enter the code GitHub sends to your email. GitHub may also ask you to turn on <strong>two-factor authentication (2FA)</strong>: use an authenticator app or GitHub Mobile, and save your recovery codes somewhere safe.</p></div></li>
+                    </ol>
+                    <p class="gd-note info"><strong>Optional:</strong> add a profile photo and a one-line bio under <strong>Your profile &rarr; Edit profile</strong>. It makes your GitHub look professional when you share it.</p>
+                </section>
+
+                <section class="gd-part" id="repository">
+                    <h2>Create a repository</h2>
+                    <ol class="gd-steps" start="10">
+                    <li class="gd-step"><span class="gd-num">10</span><div><h3>New repository</h3><p class="gd-path"><span class="gd-ui">+</span> <span aria-hidden="true">&rarr;</span> <span class="gd-ui">New repository</span></p><p>The <strong>+</strong> is at the top right of any GitHub page.</p></div></li>
+                    <li class="gd-step"><span class="gd-num">11</span><div><h3>Fill in the form</h3><ul><li><strong>Repository name:</strong> <code>my-portfolio</code>. Use lowercase letters and hyphens, no spaces. The name becomes the end of your link.</li><li><strong>Visibility:</strong> <strong>Public</strong>. Free accounts can only publish public repositories.</li><li><strong>Add README:</strong> leave it <strong>off</strong> for your portfolio.</li></ul><p class="gd-path"><span class="gd-ui gd-ui-go">Create repository</span></p></div></li>
                     </ol>
                 </section>
 
-                <section class="gd-part" id="part-4">
-                    <h2>4. Upload and publish</h2>
-                    <ol class="gd-steps" start="9">
-                    <li class="gd-step"><span class="gd-num">9</span><div><h3>Upload index.html</h3><p>Select <strong>uploading an existing file</strong> (or <strong>Add file &rarr; Upload files</strong>) and drag in your <code>index.html</code>. Check that the name in the list is exactly <code>index.html</code>, then select <strong>Commit changes</strong>.</p></div></li>
-                    <li class="gd-step"><span class="gd-num">10</span><div><h3>Turn on GitHub Pages</h3><p>Open <strong>Settings &rarr; Pages</strong>. Under <em>Build and deployment</em>, choose <strong>Deploy from a branch</strong>, branch <strong>main</strong>, folder <strong>/ (root)</strong>, then <strong>Save</strong>.</p></div></li>
-                    <li class="gd-step"><span class="gd-num">11</span><div><h3>Wait for your site</h3><p>Publishing usually takes 1 to 10 minutes. The <strong>Actions</strong> tab shows a green ✓ when it is done. Refresh <strong>Settings &rarr; Pages</strong> to see "Your site is live at" and your address, for example <code>https://your-username.github.io/my-portfolio/</code>.</p></div></li>
-                    </ol>
-                </section>
-
-                <section class="gd-part" id="part-5">
-                    <h2>5. Share your link</h2>
+                <section class="gd-part" id="upload">
+                    <h2>Upload your file</h2>
                     <ol class="gd-steps" start="12">
-                    <li class="gd-step"><span class="gd-num">12</span><div><h3>Test and submit</h3><p>Open your link in a new tab (or a private window) to check it. Then submit the GitHub Pages address to your instructor. Do not submit a <code>file:///</code> address or the repository page.</p></div></li>
+                    <li class="gd-step"><span class="gd-num">12</span><div><h3>Upload index.html and commit</h3><p class="gd-path"><span class="gd-ui">uploading an existing file</span> <span class="gd-or">or</span> <span class="gd-ui">Add file ▾</span> <span aria-hidden="true">&rarr;</span> <span class="gd-ui">Upload files</span></p><p>Drag in your <code>index.html</code>. Check that the name in the list is exactly <code>index.html</code>. Type a short message such as <em>Add portfolio</em>, then select:</p><p class="gd-path"><span class="gd-ui gd-ui-go">Commit changes</span></p></div></li>
+                    </ol>
+                    <p class="gd-note warn"><strong>Upload only your exported index.html.</strong> Do not upload the Portfolio Creator's own files. In the browser, each file can be up to 25 MB.</p>
+                </section>
+
+                <section class="gd-part" id="pages">
+                    <h2>Publish with GitHub Pages</h2>
+                    <ol class="gd-steps" start="13">
+                    <li class="gd-step"><span class="gd-num">13</span><div><h3>Turn on GitHub Pages</h3><p class="gd-path"><span class="gd-ui">Settings</span> <span aria-hidden="true">&rarr;</span> <span class="gd-ui">Pages</span></p><p>Under <em>Build and deployment</em>: Source <strong>Deploy from a branch</strong>, branch <strong>main</strong>, folder <strong>/ (root)</strong>, then <span class="gd-ui">Save</span>.</p></div></li>
+                    <li class="gd-step"><span class="gd-num">14</span><div><h3>Wait for your link</h3><p>Publishing usually takes 1 to 10 minutes. The <strong>Actions</strong> tab shows a green ✓ when it is done. Refresh <strong>Settings &rarr; Pages</strong> to see <em>"Your site is live at"</em> and select <span class="gd-ui">Visit site</span>.</p><p class="gd-url">https://<span>your-username</span>.github.io/<span>my-portfolio</span>/</p></div></li>
+                    </ol>
+                </section>
+
+                <section class="gd-part" id="share">
+                    <h2>Share and update</h2>
+                    <ol class="gd-steps" start="15">
+                    <li class="gd-step"><span class="gd-num">15</span><div><h3>Test and submit</h3><p>Open your link in a private window to check it. Then submit the GitHub Pages address to your instructor. Do not submit a <code>file:///</code> address or the repository page.</p></div></li>
                     </ol>
                     <p class="gd-note warn"><strong>Your site is public.</strong> Anyone with the link can see it. Do not include your home address, phone number, student ID or other private information.</p>
+                    <h3 class="gd-h3">Updating later</h3>
+                    <p>Make your changes in Portfolio Creator (or restore your backup with <strong>Draft &rarr; Restore backup</strong>) and export a new <code>index.html</code>. In the same repository, select <strong>Add file &rarr; Upload files</strong>, drag in the new file and commit. A file with the same name replaces the old one. If you still see the old version, wait a few minutes and press <strong>Ctrl + Shift + R</strong>.</p>
+                    <p class="gd-note info"><strong>Shorter link:</strong> if you name the repository exactly <code>your-username.github.io</code>, your site is at <code>https://your-username.github.io/</code>, without a repository name at the end.</p>
+                </section>
+
+                <section class="gd-part" id="other-projects">
+                    <h2>Use GitHub for your other projects</h2>
+                    <p>The same steps work for any class or personal project: create a repository, upload your files and commit. This time, turn <strong>Add README</strong> on. A good repository has:</p>
+                    <ul class="gd-checks">
+                        <li><strong>A clear name</strong>, such as <code>sales-dashboard</code> or <code>survey-analysis</code>.</li>
+                        <li><strong>A README</strong> that answers: What is it? Which tools did you use? What did you find? Add one or two screenshots.</li>
+                        <li><strong>Tidy folders</strong>, such as <code>data/</code>, <code>notebooks/</code> and <code>images/</code>. When uploading, you can drag a whole folder.</li>
+                        <li><strong>No private data:</strong> no passwords, API keys, personal information or confidential company data.</li>
+                    </ul>
+                    <p>Then add the repository link to the project in your portfolio, so visitors can see your work in detail.</p>
                 </section>
 
                 <section class="gd-part" id="help">
@@ -126,11 +202,6 @@
                         <li><strong>Public repository.</strong> Free accounts can only publish public repositories.</li>
                         <li><strong>File, not folder.</strong> <code>index.html</code> must be on the main page of the repository, not inside another folder.</li>
                     </ol>
-                </section>
-
-                <section class="gd-part" id="update">
-                    <h2>Updating your portfolio later</h2>
-                    <p>Make your changes in Portfolio Creator (or restore your backup with <strong>Draft &rarr; Restore backup</strong>), export a new <code>index.html</code>, and upload it to the same repository so it replaces the old one. Keep the name exactly <code>index.html</code>. If you still see the old version, wait a few minutes and press <strong>Ctrl + Shift + R</strong>.</p>
                 </section>
 
                 <div class="gd-end">
